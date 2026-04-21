@@ -22,6 +22,21 @@ const steps = [
   "在控制台查看监控与用量"
 ];
 
+const rechargeLinks = [
+  {
+    title: "新商城",
+    desc: "推荐入口，体验更完整。",
+    url: "https://shop.chongplus.plus/",
+    cta: "前往充值"
+  },
+  {
+    title: "国内商城",
+    desc: "国内网络环境可优先使用。",
+    url: "http://wx.wukongkt.vip:28088/",
+    cta: "前往充值"
+  }
+];
+
 const quickLinks = [
   {
     title: "注册账号",
@@ -42,10 +57,10 @@ const quickLinks = [
     cta: "前往兑换"
   },
   {
-    title: "售后联系方式",
-    desc: "点击加入 QQ 群：大象业务 Token 售后①群。",
-    url: "https://qm.qq.com/q/7WzZmGksdG",
-    cta: "加入售后群"
+    title: "支持",
+    desc: "遇到问题可在这里联系支持。",
+    action: "support",
+    cta: "查看"
   }
 ];
 
@@ -74,6 +89,7 @@ app.innerHTML = `
       ChongPlus
     </a>
     <nav class="nav">
+      <a href="#recharge">充值中心</a>
       <a href="#links">快速入口</a>
       <a href="#advantage">优势</a>
       <a href="#steps">接入流程</a>
@@ -93,6 +109,14 @@ app.innerHTML = `
         <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">立即注册</a>
         <a class="btn btn-secondary" href="#steps">查看接入步骤</a>
       </div>
+    </section>
+
+    <section id="recharge" class="section reveal">
+      <h2>充值中心</h2>
+      <div class="recharge-grid" id="recharge-links"></div>
+      <p class="section-note">
+        如出现支付异常，<button class="inline-link" type="button" data-action="support">联系客服支持</button>
+      </p>
     </section>
 
     <section id="links" class="section reveal">
@@ -118,8 +142,31 @@ app.innerHTML = `
 
   <footer class="site-footer">
     <p>© ${new Date().getFullYear()} ChongPlus</p>
-    <a href="https://chongplus.plus" target="_blank" rel="noreferrer">chongplus.plus</a>
+    <div class="footer-links">
+      <button class="footer-link" type="button" data-action="support">支持</button>
+      <a href="https://chongplus.plus" target="_blank" rel="noreferrer">chongplus.plus</a>
+    </div>
   </footer>
+
+  <div class="modal" id="support-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="modal"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="support-title">
+      <div class="modal-header">
+        <h3 id="support-title">支持入口</h3>
+        <button class="icon-btn" type="button" aria-label="关闭" data-close="modal">×</button>
+      </div>
+      <p class="modal-hint">如需售后支持，可扫码加入群聊，或使用群号添加。</p>
+      <div class="support-meta">
+        <span class="support-label">QQ群</span>
+        <code class="support-code" id="support-qq">1073525378</code>
+        <button class="mini-btn" type="button" data-action="copy-qq" aria-label="复制QQ群号">复制</button>
+      </div>
+      <img class="support-image" src="/售后QQ群.jpg" alt="售后 QQ 群入口" loading="lazy" />
+      <div class="modal-actions">
+        <a class="btn btn-secondary" href="https://qm.qq.com/q/7WzZmGksdG" target="_blank" rel="noreferrer">无法扫码？点此加入</a>
+      </div>
+    </div>
+  </div>
 `;
 
 document.querySelector("#highlights").innerHTML = highlights
@@ -144,13 +191,29 @@ document.querySelector("#steps-list").innerHTML = steps
   )
   .join("");
 
-document.querySelector("#quick-links").innerHTML = quickLinks
+document.querySelector("#recharge-links").innerHTML = rechargeLinks
   .map(
     (item, idx) => `
       <article class="link-card stagger" style="--delay:${idx * 80}ms">
         <h3>${item.title}</h3>
         <p>${item.desc}</p>
         <a class="btn btn-secondary" href="${item.url}" target="_blank" rel="noreferrer">${item.cta}</a>
+      </article>
+    `
+  )
+  .join("");
+
+document.querySelector("#quick-links").innerHTML = quickLinks
+  .map(
+    (item, idx) => `
+      <article class="link-card stagger" style="--delay:${idx * 80}ms">
+        <h3>${item.title}</h3>
+        <p>${item.desc}</p>
+        ${
+          item.action === "support"
+            ? `<button class="btn btn-secondary" type="button" data-action="support">${item.cta}</button>`
+            : `<a class="btn btn-secondary" href="${item.url}" target="_blank" rel="noreferrer">${item.cta}</a>`
+        }
       </article>
     `
   )
@@ -180,3 +243,64 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+const supportModal = document.querySelector("#support-modal");
+const supportQQ = "1073525378";
+const supportQQEl = document.querySelector("#support-qq");
+let copyToastTimer = null;
+
+function setSupportModalOpen(open) {
+  supportModal.classList.toggle("is-open", open);
+  supportModal.setAttribute("aria-hidden", open ? "false" : "true");
+  document.documentElement.classList.toggle("has-modal", open);
+}
+
+async function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return true;
+  }
+
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.position = "fixed";
+  ta.style.left = "-9999px";
+  document.body.appendChild(ta);
+  ta.select();
+  const ok = document.execCommand("copy");
+  document.body.removeChild(ta);
+  return ok;
+}
+
+function setCopyState(ok) {
+  if (!supportQQEl) return;
+  supportQQEl.dataset.copied = ok ? "true" : "false";
+  if (copyToastTimer) window.clearTimeout(copyToastTimer);
+  copyToastTimer = window.setTimeout(() => {
+    supportQQEl.dataset.copied = "false";
+  }, 1200);
+}
+
+document.addEventListener("click", (e) => {
+  const actionEl = e.target.closest("[data-action]");
+  if (actionEl?.dataset.action === "support") {
+    setSupportModalOpen(true);
+  }
+  if (actionEl?.dataset.action === "copy-qq") {
+    copyText(supportQQ)
+      .then((ok) => setCopyState(ok))
+      .catch(() => setCopyState(false));
+  }
+
+  const closeEl = e.target.closest("[data-close='modal']");
+  if (closeEl) {
+    setSupportModalOpen(false);
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && supportModal.classList.contains("is-open")) {
+    setSupportModalOpen(false);
+  }
+});
