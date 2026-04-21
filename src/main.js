@@ -1,4 +1,5 @@
 import "./style.css";
+import { supportModalMarkup, wireSupportModal } from "./supportModal.js";
 
 const highlights = [
   {
@@ -107,77 +108,6 @@ const guideFaqs = [
   }
 ];
 
-const codexTutorial = {
-  title: "使用 Codex 教程",
-  intro:
-    "按下面步骤完成安装与配置；若下载/支付/兑换遇到异常，可随时联系客服支持。",
-  downloadUrl:
-    "https://kazjsfecs3y.feishu.cn/wiki/JNXAwxqeOiI3Hxky3BXcYdkrnYb",
-  steps: [
-    {
-      title: "注册账号",
-      body: '官网地址：<a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>',
-      images: []
-    },
-    {
-      title: "安装 cc-switch",
-      body:
-        '方案一：<a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
-        '方案二：无法访问 GitHub 的伙伴，<a href="' +
-        "https://kazjsfecs3y.feishu.cn/wiki/JNXAwxqeOiI3Hxky3BXcYdkrnYb" +
-        '" target="_blank" rel="noreferrer">点此下载安装包</a>',
-      images: ["/codex-guide/image1.png"]
-    },
-    {
-      title: "安装 Codex",
-      body: "按提示完成安装。",
-      images: ["/codex-guide/image2.png"]
-    },
-    {
-      title: "创建 API Key 并导入 cc-switch",
-      body: "创建密钥后导入到 cc-switch，并确保分组配置正确。",
-      images: ["/codex-guide/image3.png"]
-    },
-    {
-      title: "初始化并开始使用",
-      body:
-        "在项目目录打开终端，执行初始化命令，等待 5～10 秒后即可开始使用。Windows 可用 Win+R 输入 cmd；macOS/Linux 直接打开终端。",
-      images: []
-    }
-  ]
-};
-
-const claudeCodeTutorial = {
-  title: "使用 Claude Code 教程",
-  intro:
-    "适合快速上手 Claude Code 的安装与配置流程；如果下载或网络异常，可联系客服支持。",
-  steps: [
-    {
-      title: "注册账号",
-      body:
-        '推荐地址：<a href="https://chongplus.plus/home" target="_blank" rel="noreferrer">chongplus.plus/home</a><br />' +
-        '备用地址：<a href="http://115.190.239.96:10828/" target="_blank" rel="noreferrer">115.190.239.96:10828</a>',
-      images: []
-    },
-    {
-      title: "安装 cc-switch",
-      body:
-        '方案一：<a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
-        "方案二：无法访问 GitHub 的伙伴，可在群内获取安装包（Windows/Linux/macOS）。",
-      images: [
-        "/claude-code-guide/page01-img01.png",
-        "/claude-code-guide/page01-img02.png"
-      ]
-    },
-    {
-      title: "安装 Claude Code",
-      body:
-        '参考官方快速开始：<a href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">Claude Code Quickstart</a>',
-      images: []
-    }
-  ]
-};
-
 const app = document.querySelector("#app");
 
 app.innerHTML = `
@@ -192,8 +122,7 @@ app.innerHTML = `
       <a href="#links">快速入口</a>
       <a href="#advantage">优势</a>
       <a href="#steps">接入流程</a>
-      <a href="#codex">Codex 教程</a>
-      <a href="#claude">Claude Code</a>
+      <a href="/tutorials.html">教程</a>
       <a href="#guide">指南</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -236,26 +165,6 @@ app.innerHTML = `
       <ol class="steps" id="steps-list"></ol>
     </section>
 
-    <section id="codex" class="section reveal">
-      <h2>${codexTutorial.title}</h2>
-      <p class="section-note">${codexTutorial.intro}</p>
-      <div class="tutorial-actions">
-        <a class="btn btn-secondary" href="${codexTutorial.downloadUrl}" target="_blank" rel="noreferrer">下载安装包</a>
-        <button class="btn btn-secondary" type="button" data-action="support">联系客服支持</button>
-      </div>
-      <ol class="tutorial" id="codex-steps"></ol>
-    </section>
-
-    <section id="claude" class="section reveal">
-      <h2>${claudeCodeTutorial.title}</h2>
-      <p class="section-note">${claudeCodeTutorial.intro}</p>
-      <div class="tutorial-actions">
-        <a class="btn btn-secondary" href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">官方 Quickstart</a>
-        <button class="btn btn-secondary" type="button" data-action="support">联系客服支持</button>
-      </div>
-      <ol class="tutorial" id="claude-steps"></ol>
-    </section>
-
     <section id="guide" class="section reveal">
       <h2>常见问题指南</h2>
       <div class="guide" id="guide-list"></div>
@@ -277,27 +186,7 @@ app.innerHTML = `
       <a href="https://chongplus.plus" target="_blank" rel="noreferrer">chongplus.plus</a>
     </div>
   </footer>
-
-  <div class="modal" id="support-modal" aria-hidden="true">
-    <div class="modal-backdrop" data-close="modal"></div>
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="support-title">
-      <div class="modal-header">
-        <h3 id="support-title">支持入口</h3>
-        <button class="icon-btn" type="button" aria-label="关闭" data-close="modal">×</button>
-      </div>
-      <p class="modal-hint">如需售后支持，可扫码加入群聊，或使用群号添加。</p>
-      <div class="support-meta">
-        <span class="support-label">QQ群</span>
-        <code class="support-code" id="support-qq">1073525378</code>
-        <button class="mini-btn" type="button" data-action="copy-qq" aria-label="复制QQ群号">复制</button>
-      </div>
-      <img class="support-image" src="/售后QQ群.jpg" alt="售后 QQ 群入口" loading="lazy" />
-      <img class="support-image support-image-secondary" src="/faq-guide/image6.png" alt="客服信息" loading="lazy" />
-      <div class="modal-actions">
-        <a class="btn btn-secondary" href="https://qm.qq.com/q/7WzZmGksdG" target="_blank" rel="noreferrer">无法扫码？点此加入</a>
-      </div>
-    </div>
-  </div>
+  ${supportModalMarkup()}
 `;
 
 document.querySelector("#highlights").innerHTML = highlights
@@ -380,50 +269,6 @@ document.querySelector("#guide-list").innerHTML = guideFaqs
   )
   .join("");
 
-document.querySelector("#codex-steps").innerHTML = codexTutorial.steps
-  .map(
-    (item, idx) => `
-      <li class="tutorial-step stagger" style="--delay:${idx * 80}ms">
-        <div class="tutorial-head">
-          <span class="tutorial-index">${String(idx + 1).padStart(2, "0")}</span>
-          <h3>${item.title}</h3>
-        </div>
-        <div class="tutorial-body">
-          <p>${item.body}</p>
-          ${(item.images || [])
-            .map(
-              (src) =>
-                `<a class="guide-image-link" href="${src}" target="_blank" rel="noreferrer"><img class="guide-image" src="${src}" alt="" loading="lazy" /></a>`
-            )
-            .join("")}
-        </div>
-      </li>
-    `
-  )
-  .join("");
-
-document.querySelector("#claude-steps").innerHTML = claudeCodeTutorial.steps
-  .map(
-    (item, idx) => `
-      <li class="tutorial-step stagger" style="--delay:${idx * 80}ms">
-        <div class="tutorial-head">
-          <span class="tutorial-index">${String(idx + 1).padStart(2, "0")}</span>
-          <h3>${item.title}</h3>
-        </div>
-        <div class="tutorial-body">
-          <p>${item.body}</p>
-          ${(item.images || [])
-            .map(
-              (src) =>
-                `<a class="guide-image-link" href="${src}" target="_blank" rel="noreferrer"><img class="guide-image" src="${src}" alt="" loading="lazy" /></a>`
-            )
-            .join("")}
-        </div>
-      </li>
-    `
-  )
-  .join("");
-
 const observer = new IntersectionObserver(
   (entries) => {
     for (const entry of entries) {
@@ -437,64 +282,4 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-
-const supportModal = document.querySelector("#support-modal");
-const supportQQ = "1073525378";
-const supportQQEl = document.querySelector("#support-qq");
-let copyToastTimer = null;
-
-function setSupportModalOpen(open) {
-  supportModal.classList.toggle("is-open", open);
-  supportModal.setAttribute("aria-hidden", open ? "false" : "true");
-  document.documentElement.classList.toggle("has-modal", open);
-}
-
-async function copyText(text) {
-  if (navigator.clipboard?.writeText) {
-    await navigator.clipboard.writeText(text);
-    return true;
-  }
-
-  const ta = document.createElement("textarea");
-  ta.value = text;
-  ta.setAttribute("readonly", "");
-  ta.style.position = "fixed";
-  ta.style.left = "-9999px";
-  document.body.appendChild(ta);
-  ta.select();
-  const ok = document.execCommand("copy");
-  document.body.removeChild(ta);
-  return ok;
-}
-
-function setCopyState(ok) {
-  if (!supportQQEl) return;
-  supportQQEl.dataset.copied = ok ? "true" : "false";
-  if (copyToastTimer) window.clearTimeout(copyToastTimer);
-  copyToastTimer = window.setTimeout(() => {
-    supportQQEl.dataset.copied = "false";
-  }, 1200);
-}
-
-document.addEventListener("click", (e) => {
-  const actionEl = e.target.closest("[data-action]");
-  if (actionEl?.dataset.action === "support") {
-    setSupportModalOpen(true);
-  }
-  if (actionEl?.dataset.action === "copy-qq") {
-    copyText(supportQQ)
-      .then((ok) => setCopyState(ok))
-      .catch(() => setCopyState(false));
-  }
-
-  const closeEl = e.target.closest("[data-close='modal']");
-  if (closeEl) {
-    setSupportModalOpen(false);
-  }
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && supportModal.classList.contains("is-open")) {
-    setSupportModalOpen(false);
-  }
-});
+wireSupportModal();
