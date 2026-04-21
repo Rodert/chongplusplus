@@ -18,7 +18,7 @@ const highlights = [
 
 const steps = [
   "先注册账号并完成基础设置",
-  "将你的客户端 Base URL 指向 chongplus.plus",
+  "将你的客户端 Base URL 指向 https://api.chongplus.plus/",
   "用现有请求结构发起调用",
   "在控制台查看监控与用量"
 ];
@@ -114,6 +114,11 @@ const guideFaqs = [
   }
 ];
 
+const combinedFaqs = [
+  ...guideFaqs,
+  ...faqs.map((item) => ({ ...item, images: [] }))
+];
+
 const app = document.querySelector("#app");
 
 app.innerHTML = `
@@ -129,8 +134,7 @@ app.innerHTML = `
       <a href="#advantage">优势</a>
       <a href="#steps">接入流程</a>
       <a href="/tutorials.html">教程</a>
-      <a href="#guide">指南</a>
-      <a href="#faq">FAQ</a>
+      <a href="#faq">FAQ / 指南</a>
     </nav>
   </header>
 
@@ -172,17 +176,12 @@ app.innerHTML = `
       <ol class="steps" id="steps-list"></ol>
     </section>
 
-    <section id="guide" class="section reveal">
-      <h2>常见问题指南</h2>
-      <div class="guide" id="guide-list"></div>
+    <section id="faq" class="section reveal">
+      <h2>常见问题</h2>
+      <div class="guide" id="faq-list"></div>
       <p class="section-note">
         如遇到支付/兑换/网络异常，<button class="inline-link" type="button" data-action="support">联系客服支持</button>
       </p>
-    </section>
-
-    <section id="faq" class="section reveal">
-      <h2>常见问题</h2>
-      <div class="faq" id="faq-list"></div>
     </section>
   </main>
 
@@ -246,18 +245,7 @@ document.querySelector("#quick-links").innerHTML = quickLinks
   )
   .join("");
 
-document.querySelector("#faq-list").innerHTML = faqs
-  .map(
-    (item, idx) => `
-      <details class="faq-item stagger" style="--delay:${idx * 80}ms">
-        <summary>${item.q}</summary>
-        <p>${item.a}</p>
-      </details>
-    `
-  )
-  .join("");
-
-document.querySelector("#guide-list").innerHTML = guideFaqs
+document.querySelector("#faq-list").innerHTML = combinedFaqs
   .map(
     (item, idx) => `
       <details class="guide-item stagger" style="--delay:${idx * 80}ms">

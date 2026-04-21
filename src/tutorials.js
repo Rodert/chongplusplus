@@ -55,8 +55,7 @@ app.innerHTML = `
     <nav class="nav">
       <a href="/#recharge">充值中心</a>
       <a href="/#links">快速入口</a>
-      <a href="/#guide">指南</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/#faq">FAQ / 指南</a>
       <a href="#codex">Codex 教程</a>
       <a href="#claude">Claude Code</a>
     </nav>
