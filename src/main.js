@@ -1,6 +1,11 @@
 import "./style.css";
 import { supportModalMarkup, wireSupportModal } from "./supportModal.js";
 
+const baseUrl = import.meta.env.BASE_URL || "/";
+const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+const tutorialsHref = `${normalizedBaseUrl}tutorials.html`;
+const isExternalHref = (href) => /^https?:\/\//i.test(href);
+
 const highlights = [
   {
     title: "统一入口",
@@ -48,7 +53,7 @@ const quickLinks = [
   {
     title: "Codex / Claude Code 教程",
     desc: "两套教程集中在独立页面，按步骤完成安装与配置。",
-    url: "/tutorials.html",
+    url: tutorialsHref,
     cta: "查看教程"
   },
   {
@@ -133,7 +138,7 @@ app.innerHTML = `
       <a href="#links">快速入口</a>
       <a href="#advantage">优势</a>
       <a href="#steps">接入流程</a>
-      <a href="/tutorials.html">教程</a>
+      <a href="${tutorialsHref}">教程</a>
       <a href="#faq">FAQ / 指南</a>
     </nav>
   </header>
@@ -149,7 +154,7 @@ app.innerHTML = `
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">立即注册</a>
         <a class="btn btn-secondary" href="#steps">查看接入步骤</a>
-        <a class="btn btn-secondary" href="/tutorials.html">查看教程</a>
+        <a class="btn btn-secondary" href="${tutorialsHref}">查看教程</a>
       </div>
     </section>
 
@@ -177,7 +182,7 @@ app.innerHTML = `
     </section>
 
     <section id="faq" class="section reveal">
-      <h2>常见问题</h2>
+      <h2>FAQ / 指南</h2>
       <div class="guide" id="faq-list"></div>
       <p class="section-note">
         如遇到支付/兑换/网络异常，<button class="inline-link" type="button" data-action="support">联系客服支持</button>
@@ -238,7 +243,7 @@ document.querySelector("#quick-links").innerHTML = quickLinks
         ${
           item.action === "support"
             ? `<button class="btn btn-secondary" type="button" data-action="support">${item.cta}</button>`
-            : `<a class="btn btn-secondary" href="${item.url}" target="_blank" rel="noreferrer">${item.cta}</a>`
+            : `<a class="btn btn-secondary" href="${item.url}" ${isExternalHref(item.url) ? 'target="_blank" rel="noreferrer"' : ""}>${item.cta}</a>`
         }
       </article>
     `

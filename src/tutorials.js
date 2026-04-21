@@ -4,6 +4,10 @@ import { supportModalMarkup, wireSupportModal } from "./supportModal.js";
 
 const app = document.querySelector("#app");
 
+const baseUrl = import.meta.env.BASE_URL || "/";
+const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+const homeHref = normalizedBaseUrl;
+
 function renderTutorialSteps(targetSelector, steps) {
   const target = document.querySelector(targetSelector);
   if (!target) return;
@@ -48,14 +52,14 @@ function tutorialActionsMarkup(actions = []) {
 app.innerHTML = `
   <div class="noise"></div>
   <header class="site-header">
-    <a class="brand" href="/" aria-label="返回首页">
+    <a class="brand" href="${homeHref}" aria-label="返回首页">
       <span class="brand-dot"></span>
       ChongPlus
     </a>
     <nav class="nav">
-      <a href="/#recharge">充值中心</a>
-      <a href="/#links">快速入口</a>
-      <a href="/#faq">FAQ / 指南</a>
+      <a href="${homeHref}#recharge">充值中心</a>
+      <a href="${homeHref}#links">快速入口</a>
+      <a href="${homeHref}#faq">FAQ / 指南</a>
       <a href="#codex">Codex 教程</a>
       <a href="#claude">Claude Code</a>
     </nav>
@@ -69,7 +73,7 @@ app.innerHTML = `
         两个教程都在本页集中维护，按步骤完成安装与配置即可开始使用。
       </p>
       <div class="hero-actions">
-        <a class="btn btn-secondary" href="/#steps">返回接入流程</a>
+        <a class="btn btn-secondary" href="${homeHref}#steps">返回接入流程</a>
         <button class="btn btn-secondary" type="button" data-action="support">联系客服支持</button>
       </div>
     </section>
