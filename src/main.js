@@ -147,6 +147,37 @@ const codexTutorial = {
   ]
 };
 
+const claudeCodeTutorial = {
+  title: "使用 Claude Code 教程",
+  intro:
+    "适合快速上手 Claude Code 的安装与配置流程；如果下载或网络异常，可联系客服支持。",
+  steps: [
+    {
+      title: "注册账号",
+      body:
+        '推荐地址：<a href="https://chongplus.plus/home" target="_blank" rel="noreferrer">chongplus.plus/home</a><br />' +
+        '备用地址：<a href="http://115.190.239.96:10828/" target="_blank" rel="noreferrer">115.190.239.96:10828</a>',
+      images: []
+    },
+    {
+      title: "安装 cc-switch",
+      body:
+        '方案一：<a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
+        "方案二：无法访问 GitHub 的伙伴，可在群内获取安装包（Windows/Linux/macOS）。",
+      images: [
+        "/claude-code-guide/page01-img01.png",
+        "/claude-code-guide/page01-img02.png"
+      ]
+    },
+    {
+      title: "安装 Claude Code",
+      body:
+        '参考官方快速开始：<a href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">Claude Code Quickstart</a>',
+      images: []
+    }
+  ]
+};
+
 const app = document.querySelector("#app");
 
 app.innerHTML = `
@@ -162,6 +193,7 @@ app.innerHTML = `
       <a href="#advantage">优势</a>
       <a href="#steps">接入流程</a>
       <a href="#codex">Codex 教程</a>
+      <a href="#claude">Claude Code</a>
       <a href="#guide">指南</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -212,6 +244,16 @@ app.innerHTML = `
         <button class="btn btn-secondary" type="button" data-action="support">联系客服支持</button>
       </div>
       <ol class="tutorial" id="codex-steps"></ol>
+    </section>
+
+    <section id="claude" class="section reveal">
+      <h2>${claudeCodeTutorial.title}</h2>
+      <p class="section-note">${claudeCodeTutorial.intro}</p>
+      <div class="tutorial-actions">
+        <a class="btn btn-secondary" href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">官方 Quickstart</a>
+        <button class="btn btn-secondary" type="button" data-action="support">联系客服支持</button>
+      </div>
+      <ol class="tutorial" id="claude-steps"></ol>
     </section>
 
     <section id="guide" class="section reveal">
@@ -339,6 +381,28 @@ document.querySelector("#guide-list").innerHTML = guideFaqs
   .join("");
 
 document.querySelector("#codex-steps").innerHTML = codexTutorial.steps
+  .map(
+    (item, idx) => `
+      <li class="tutorial-step stagger" style="--delay:${idx * 80}ms">
+        <div class="tutorial-head">
+          <span class="tutorial-index">${String(idx + 1).padStart(2, "0")}</span>
+          <h3>${item.title}</h3>
+        </div>
+        <div class="tutorial-body">
+          <p>${item.body}</p>
+          ${(item.images || [])
+            .map(
+              (src) =>
+                `<a class="guide-image-link" href="${src}" target="_blank" rel="noreferrer"><img class="guide-image" src="${src}" alt="" loading="lazy" /></a>`
+            )
+            .join("")}
+        </div>
+      </li>
+    `
+  )
+  .join("");
+
+document.querySelector("#claude-steps").innerHTML = claudeCodeTutorial.steps
   .map(
     (item, idx) => `
       <li class="tutorial-step stagger" style="--delay:${idx * 80}ms">
