@@ -46,6 +46,12 @@ const quickLinks = [
     cta: "前往注册"
   },
   {
+    title: "Codex / Claude Code 教程",
+    desc: "两套教程集中在独立页面，按步骤完成安装与配置。",
+    url: "/tutorials.html",
+    cta: "查看教程"
+  },
+  {
     title: "创建 Key",
     desc: "登录后创建 API Key 用于调用接口。",
     url: "https://api.chongplus.plus/keys",
@@ -139,6 +145,7 @@ app.innerHTML = `
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">立即注册</a>
         <a class="btn btn-secondary" href="#steps">查看接入步骤</a>
+        <a class="btn btn-secondary" href="/tutorials.html">查看教程</a>
       </div>
     </section>
 
