@@ -66,8 +66,8 @@ export const claudeCodeTutorial = {
     {
       title: "注册账号",
       body:
-        '推荐地址：<a href="https://chongplus.plus/home" target="_blank" rel="noreferrer">chongplus.plus/home</a><br />' +
-        '备用地址：<a href="http://115.190.239.96:10828/" target="_blank" rel="noreferrer">115.190.239.96:10828</a>',
+        '注册网址：<a href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">api.chongplus.plus/register</a><br />' +
+        '官网：<a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>',
       images: []
     },
     {

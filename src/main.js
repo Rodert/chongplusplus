@@ -113,7 +113,7 @@ const app = document.querySelector("#app");
 app.innerHTML = `
   <div class="noise"></div>
   <header class="site-header">
-    <a class="brand" href="https://chongplus.plus" target="_blank" rel="noreferrer">
+    <a class="brand" href="https://chongplus.plus/" target="_blank" rel="noreferrer">
       <span class="brand-dot"></span>
       ChongPlus
     </a>
@@ -183,7 +183,7 @@ app.innerHTML = `
     <p>© ${new Date().getFullYear()} ChongPlus</p>
     <div class="footer-links">
       <button class="footer-link" type="button" data-action="support">支持</button>
-      <a href="https://chongplus.plus" target="_blank" rel="noreferrer">chongplus.plus</a>
+      <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>
     </div>
   </footer>
   ${supportModalMarkup()}
