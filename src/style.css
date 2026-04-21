@@ -297,6 +297,46 @@ h1 {
   line-height: 1.7;
 }
 
+.guide {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.guide-item {
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.guide-item summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.guide-body {
+  margin-top: 0.7rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.guide-body p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.guide-image-link {
+  display: block;
+}
+
+.guide-image {
+  display: block;
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+
 .site-footer {
   margin: 1.6rem auto 2.5rem;
   padding-top: 0.7rem;
@@ -441,6 +481,11 @@ h1 {
   margin: 0.9rem auto 0.3rem;
   border-radius: 14px;
   border: 1px solid var(--line);
+}
+
+.support-image-secondary {
+  margin-top: 0.6rem;
+  opacity: 0.96;
 }
 
 .modal-actions {

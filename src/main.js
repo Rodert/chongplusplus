@@ -79,6 +79,34 @@ const faqs = [
   }
 ];
 
+const guideFaqs = [
+  {
+    q: "订阅用户（每天 50$）如何使用？",
+    a: "重新创建密钥，并把密钥指定到对应分组。",
+    images: ["/faq-guide/image1.png"]
+  },
+  {
+    q: "充值用户余额未到账怎么办？",
+    a: "付款后会得到一个兑换码，点击侧边的兑换按钮输入兑换码完成兑换。",
+    images: ["/faq-guide/image2.png"]
+  },
+  {
+    q: "切换新环境后无法访问？",
+    a: "检查 Base URL 是否为新环境，然后创建 API Key 并导入；重启你的应用或终端再试。",
+    images: ["/faq-guide/image3.png"]
+  },
+  {
+    q: "刚充值的，怎么用不了？",
+    a: "先把充值得到的兑换码在平台兑换；再新建 API Key 设置对应分组，或修改之前的 API Key。",
+    images: ["/faq-guide/image4.png"]
+  },
+  {
+    q: "请求连不上怎么办？",
+    a: "先检查本地网络环境。正常情况不需要魔法；可先切换手机热点测试定位问题。",
+    images: ["/faq-guide/image5.png"]
+  }
+];
+
 const app = document.querySelector("#app");
 
 app.innerHTML = `
@@ -93,6 +121,7 @@ app.innerHTML = `
       <a href="#links">快速入口</a>
       <a href="#advantage">优势</a>
       <a href="#steps">接入流程</a>
+      <a href="#guide">指南</a>
       <a href="#faq">FAQ</a>
     </nav>
   </header>
@@ -134,6 +163,14 @@ app.innerHTML = `
       <ol class="steps" id="steps-list"></ol>
     </section>
 
+    <section id="guide" class="section reveal">
+      <h2>常见问题指南</h2>
+      <div class="guide" id="guide-list"></div>
+      <p class="section-note">
+        如遇到支付/兑换/网络异常，<button class="inline-link" type="button" data-action="support">联系客服支持</button>
+      </p>
+    </section>
+
     <section id="faq" class="section reveal">
       <h2>常见问题</h2>
       <div class="faq" id="faq-list"></div>
@@ -162,6 +199,7 @@ app.innerHTML = `
         <button class="mini-btn" type="button" data-action="copy-qq" aria-label="复制QQ群号">复制</button>
       </div>
       <img class="support-image" src="/售后QQ群.jpg" alt="售后 QQ 群入口" loading="lazy" />
+      <img class="support-image support-image-secondary" src="/faq-guide/image6.png" alt="客服信息" loading="lazy" />
       <div class="modal-actions">
         <a class="btn btn-secondary" href="https://qm.qq.com/q/7WzZmGksdG" target="_blank" rel="noreferrer">无法扫码？点此加入</a>
       </div>
@@ -225,6 +263,25 @@ document.querySelector("#faq-list").innerHTML = faqs
       <details class="faq-item stagger" style="--delay:${idx * 80}ms">
         <summary>${item.q}</summary>
         <p>${item.a}</p>
+      </details>
+    `
+  )
+  .join("");
+
+document.querySelector("#guide-list").innerHTML = guideFaqs
+  .map(
+    (item, idx) => `
+      <details class="guide-item stagger" style="--delay:${idx * 80}ms">
+        <summary>${item.q}</summary>
+        <div class="guide-body">
+          <p>${item.a}</p>
+          ${(item.images || [])
+            .map(
+              (src) =>
+                `<a class="guide-image-link" href="${src}" target="_blank" rel="noreferrer"><img class="guide-image" src="${src}" alt="" loading="lazy" /></a>`
+            )
+            .join("")}
+        </div>
       </details>
     `
   )
