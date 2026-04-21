@@ -211,6 +211,69 @@ h1 {
   line-height: 1.7;
 }
 
+.tutorial-actions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.tutorial {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.tutorial-step {
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.tutorial-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.tutorial-index {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  background: #e7fbfa;
+  color: #0a5b57;
+}
+
+.tutorial-step h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.tutorial-body {
+  margin-top: 0.7rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.tutorial-body p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.tutorial-body a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
 .inline-link {
   appearance: none;
   border: 0;
