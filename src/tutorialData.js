@@ -23,9 +23,7 @@ export const codexTutorial = {
       title: "安装 cc-switch",
       body:
         '方案一：<a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
-        '方案二：无法访问 GitHub 的伙伴，<a href="' +
-        "https://kazjsfecs3y.feishu.cn/wiki/JNXAwxqeOiI3Hxky3BXcYdkrnYb" +
-        '" target="_blank" rel="noreferrer">点此下载安装包</a>',
+        '方案二：百度网盘下载：<a href="https://pan.baidu.com/s/1lHAMdlaSkqSFOMVLTtlFaA?pwd=6su2" target="_blank" rel="noreferrer">CC-Switch</a>（提取码：6su2）',
       images: ["/codex-guide/image1.png"]
     },
     {
@@ -74,7 +72,7 @@ export const claudeCodeTutorial = {
       title: "安装 cc-switch",
       body:
         '方案一：<a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
-        "方案二：无法访问 GitHub 的伙伴，可在群内获取安装包（Windows/Linux/macOS）。",
+        '方案二：百度网盘下载：<a href="https://pan.baidu.com/s/1lHAMdlaSkqSFOMVLTtlFaA?pwd=6su2" target="_blank" rel="noreferrer">CC-Switch</a>（提取码：6su2）。',
       images: [
         "/claude-code-guide/page01-img01.png",
         "/claude-code-guide/page01-img02.png"
@@ -90,4 +88,3 @@ export const claudeCodeTutorial = {
 };
 
 export const tutorials = [codexTutorial, claudeCodeTutorial];
-
