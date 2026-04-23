@@ -7,6 +7,13 @@ const app = document.querySelector("#app");
 const baseUrl = import.meta.env.BASE_URL || "/";
 const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 const homeHref = normalizedBaseUrl;
+const resolveAssetUrl = (assetPath) => {
+  if (!assetPath || /^(https?:)?\/\//i.test(assetPath) || assetPath.startsWith("data:")) {
+    return assetPath;
+  }
+  const cleanPath = assetPath.startsWith("/") ? assetPath.slice(1) : assetPath;
+  return `${normalizedBaseUrl}${cleanPath}`;
+};
 
 function renderTutorialSteps(targetSelector, steps) {
   const target = document.querySelector(targetSelector);
@@ -25,7 +32,7 @@ function renderTutorialSteps(targetSelector, steps) {
           ${(item.images || [])
             .map(
               (src) =>
-                `<a class="guide-image-link" href="${src}" target="_blank" rel="noreferrer"><img class="guide-image" src="${src}" alt="" loading="lazy" /></a>`
+                `<a class="guide-image-link" href="${resolveAssetUrl(src)}" target="_blank" rel="noreferrer"><img class="guide-image" src="${resolveAssetUrl(src)}" alt="" loading="lazy" /></a>`
             )
             .join("")}
         </div>
@@ -123,4 +130,3 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 wireSupportModal();
-

@@ -5,6 +5,13 @@ const baseUrl = import.meta.env.BASE_URL || "/";
 const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 const tutorialsHref = `${normalizedBaseUrl}tutorials.html`;
 const isExternalHref = (href) => /^https?:\/\//i.test(href);
+const resolveAssetUrl = (assetPath) => {
+  if (!assetPath || /^(https?:)?\/\//i.test(assetPath) || assetPath.startsWith("data:")) {
+    return assetPath;
+  }
+  const cleanPath = assetPath.startsWith("/") ? assetPath.slice(1) : assetPath;
+  return `${normalizedBaseUrl}${cleanPath}`;
+};
 
 const highlights = [
   {
@@ -260,7 +267,7 @@ document.querySelector("#faq-list").innerHTML = combinedFaqs
           ${(item.images || [])
             .map(
               (src) =>
-                `<a class="guide-image-link" href="${src}" target="_blank" rel="noreferrer"><img class="guide-image" src="${src}" alt="" loading="lazy" /></a>`
+                `<a class="guide-image-link" href="${resolveAssetUrl(src)}" target="_blank" rel="noreferrer"><img class="guide-image" src="${resolveAssetUrl(src)}" alt="" loading="lazy" /></a>`
             )
             .join("")}
         </div>

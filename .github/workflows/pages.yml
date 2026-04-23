@@ -4,12 +4,6 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
-    inputs:
-      custom_domain:
-        description: "Build for custom domain (base=/)"
-        required: false
-        default: false
-        type: boolean
 
 permissions:
   contents: read
@@ -41,8 +35,6 @@ jobs:
 
       - name: Build Site
         run: npm run build
-        env:
-          CUSTOM_DOMAIN: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.custom_domain == 'true') && 'true' || 'false' }}
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3

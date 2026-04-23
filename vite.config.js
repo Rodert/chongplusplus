@@ -1,9 +1,8 @@
 import { defineConfig } from "vite";
 
-const isCustomDomain = process.env.CUSTOM_DOMAIN === "true";
-
 export default defineConfig({
-  base: isCustomDomain ? "/" : "/chongplusplus/",
+  // Relative base makes one build work on both root domains and subpath pages.
+  base: "./",
   build: {
     rollupOptions: {
       input: {
