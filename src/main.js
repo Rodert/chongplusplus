@@ -1,10 +1,14 @@
 import "./style.css";
 import { supportModalMarkup, wireSupportModal } from "./supportModal.js";
+import { LANGUAGE_OPTIONS, applyDocumentLang, getCurrentLang, setLang, t } from "./i18n/index.js";
 
 const baseUrl = import.meta.env.BASE_URL || "/";
 const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-const tutorialsHref = `${normalizedBaseUrl}tutorials.html`;
 const isExternalHref = (href) => /^https?:\/\//i.test(href);
+const currentLang = getCurrentLang();
+const tutorialsHref =
+  currentLang === "zh" ? `${normalizedBaseUrl}tutorials.html` : `${normalizedBaseUrl}tutorials.html?lang=${currentLang}`;
+applyDocumentLang();
 const resolveAssetUrl = (assetPath) => {
   if (!assetPath || /^(https?:)?\/\//i.test(assetPath) || assetPath.startsWith("data:")) {
     return assetPath;
@@ -15,86 +19,86 @@ const resolveAssetUrl = (assetPath) => {
 
 const highlights = [
   {
-    title: "统一入口",
-    desc: "一个 Base URL 对接多模型供应方，减少业务侧 SDK 和配置分叉。"
+    title: t("home.highlights.unified.title", "统一入口"),
+    desc: t("home.highlights.unified.desc", "一个 Base URL 对接多模型供应方，减少业务侧 SDK 和配置分叉。")
   },
   {
-    title: "高可用中转",
-    desc: "支持流式返回、失败重试与智能回退，保障核心请求稳定在线。"
+    title: t("home.highlights.reliable.title", "高可用中转"),
+    desc: t("home.highlights.reliable.desc", "支持流式返回、失败重试与智能回退，保障核心请求稳定在线。")
   },
   {
-    title: "可观测与计费",
-    desc: "清晰查看请求量、成功率、时延与消耗，方便团队做成本治理。"
+    title: t("home.highlights.observability.title", "可观测与计费"),
+    desc: t("home.highlights.observability.desc", "清晰查看请求量、成功率、时延与消耗，方便团队做成本治理。")
   }
 ];
 
 const steps = [
-  "先注册账号并完成基础设置",
-  "将你的客户端 Base URL 指向 https://api.chongplus.plus/",
-  "用现有请求结构发起调用",
-  "在控制台查看监控与用量"
+  t("home.steps.1", "先注册账号并完成基础设置"),
+  t("home.steps.2", "将你的客户端 Base URL 指向 https://api.chongplus.plus/"),
+  t("home.steps.3", "用现有请求结构发起调用"),
+  t("home.steps.4", "在控制台查看监控与用量")
 ];
 
 const rechargeLinks = [
   {
-    title: "新商城",
-    desc: "推荐入口，体验更完整。",
+    title: t("home.recharge.new.title", "新商城"),
+    desc: t("home.recharge.new.desc", "推荐入口，体验更完整。"),
     url: "https://shop.chongplus.plus/",
-    cta: "前往充值"
+    cta: t("home.recharge.new.cta", "前往充值")
   },
   {
-    title: "国内商城",
-    desc: "国内网络环境可优先使用。",
+    title: t("home.recharge.cn.title", "国内商城"),
+    desc: t("home.recharge.cn.desc", "国内网络环境可优先使用。"),
     url: "http://wx.wukongkt.vip:28088/",
-    cta: "前往充值"
+    cta: t("home.recharge.cn.cta", "前往充值")
   }
 ];
 
 const quickLinks = [
   {
-    title: "注册账号",
-    desc: "新用户先完成注册，再进入后续流程。",
+    title: t("home.quick.register.title", "注册账号"),
+    desc: t("home.quick.register.desc", "新用户先完成注册，再进入后续流程。"),
     url: "https://api.chongplus.plus/register",
-    cta: "前往注册"
+    cta: t("home.quick.register.cta", "前往注册")
   },
   {
-    title: "Codex / Claude Code 教程",
-    desc: "两套教程集中在独立页面，按步骤完成安装与配置。",
+    title: t("home.quick.tutorials.title", "Codex / Claude Code 教程"),
+    desc: t("home.quick.tutorials.desc", "两套教程集中在独立页面，按步骤完成安装与配置。"),
     url: tutorialsHref,
-    cta: "查看教程"
+    cta: t("home.quick.tutorials.cta", "查看教程")
   },
   {
-    title: "创建 Key",
-    desc: "登录后创建 API Key 用于调用接口。",
+    title: t("home.quick.keys.title", "创建 Key"),
+    desc: t("home.quick.keys.desc", "登录后创建 API Key 用于调用接口。"),
     url: "https://api.chongplus.plus/keys",
-    cta: "创建 Key"
+    cta: t("home.quick.keys.cta", "创建 Key")
   },
   {
-    title: "兑换入口",
-    desc: "已有兑换码可在这里完成兑换。",
+    title: t("home.quick.redeem.title", "兑换入口"),
+    desc: t("home.quick.redeem.desc", "已有兑换码可在这里完成兑换。"),
     url: "https://api.chongplus.plus/redeem",
-    cta: "前往兑换"
+    cta: t("home.quick.redeem.cta", "前往兑换")
   },
   {
-    title: "支持",
-    desc: "遇到问题可在这里联系支持。",
+    title: t("home.quick.support.title", "支持"),
+    desc: t("home.quick.support.desc", "遇到问题可在这里联系支持。"),
     action: "support",
-    cta: "查看"
+    cta: t("home.quick.support.cta", "查看")
   }
 ];
 
 const faqs = [
   {
-    q: "需要改很多代码吗？",
-    a: "通常不需要。大部分场景只要替换 Base URL 和 API Key，即可完成接入。"
+    q: t("home.faq.q1", "需要改很多代码吗？"),
+    a: t("home.faq.a1", "通常不需要。大部分场景只要替换 Base URL 和 API Key，即可完成接入。")
   },
   {
-    q: "是否支持流式输出？",
-    a: "支持。你可以按原有流式方式读取响应，不影响前端或服务端消费逻辑。"
+    q: t("home.faq.q2", "是否支持流式输出？"),
+    a: t("home.faq.a2", "支持。你可以按原有流式方式读取响应，不影响前端或服务端消费逻辑。")
   },
   {
-    q: "如何开始试用？",
-    a: "访问 chongplus.plus，创建密钥后即可开始调用。"
+    q: t("home.faq.q3", "如何开始试用？"),
+    a: t("home.faq.a3", "访问 chongplus.plus，创建密钥后即可开始调用。")
   }
 ];
 
@@ -132,6 +136,9 @@ const combinedFaqs = [
 ];
 
 const app = document.querySelector("#app");
+const langOptionsMarkup = LANGUAGE_OPTIONS.map(
+  (item) => `<option value="${item.code}" ${item.code === currentLang ? "selected" : ""}>${item.label}</option>`
+).join("");
 
 app.innerHTML = `
   <div class="noise"></div>
@@ -140,59 +147,64 @@ app.innerHTML = `
       <span class="brand-dot"></span>
       ChongPlus
     </a>
-    <nav class="nav">
-      <a href="#recharge">充值中心</a>
-      <a href="#links">快速入口</a>
-      <a href="#advantage">优势</a>
-      <a href="#steps">接入流程</a>
-      <a href="${tutorialsHref}">教程</a>
-      <a href="#faq">FAQ / 指南</a>
-    </nav>
+    <div class="header-tools">
+      <nav class="nav">
+        <a href="#recharge">${t("nav.recharge", "充值中心")}</a>
+        <a href="#links">${t("nav.links", "快速入口")}</a>
+        <a href="#advantage">${t("nav.advantage", "优势")}</a>
+        <a href="#steps">${t("nav.steps", "接入流程")}</a>
+        <a href="${tutorialsHref}">${t("nav.tutorials", "教程")}</a>
+        <a href="#faq">${t("nav.faq", "FAQ / 指南")}</a>
+      </nav>
+      <label class="lang-switch" aria-label="${t("common.language", "语言")}">
+        <span>${t("common.language", "语言")}</span>
+        <select data-action="lang-switch">${langOptionsMarkup}</select>
+      </label>
+    </div>
   </header>
 
   <main>
     <section class="hero reveal">
-      <p class="badge">中转 API 官网</p>
-      <h1>把模型调用变成一条稳定链路</h1>
+      <p class="badge">${t("home.badge", "中转 API 官网")}</p>
+      <h1>${t("home.title", "把模型调用变成一条稳定链路")}</h1>
       <p class="hero-text">
-        chongplus.plus 提供统一、稳定、低改造成本的中转 API 能力，
-        让你的应用更快上线、更稳运行。
+        ${t("home.subtitle", "chongplus.plus 提供统一、稳定、低改造成本的中转 API 能力，让你的应用更快上线、更稳运行。")}
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">立即注册</a>
-        <a class="btn btn-secondary" href="#steps">查看接入步骤</a>
-        <a class="btn btn-secondary" href="${tutorialsHref}">查看教程</a>
+        <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">${t("home.ctaRegister", "立即注册")}</a>
+        <a class="btn btn-secondary" href="#steps">${t("home.ctaSteps", "查看接入步骤")}</a>
+        <a class="btn btn-secondary" href="${tutorialsHref}">${t("home.ctaTutorials", "查看教程")}</a>
       </div>
     </section>
 
     <section id="recharge" class="section reveal">
-      <h2>充值中心</h2>
+      <h2>${t("home.sectionRecharge", "充值中心")}</h2>
       <div class="recharge-grid" id="recharge-links"></div>
       <p class="section-note">
-        如出现支付异常，<button class="inline-link" type="button" data-action="support">联系客服支持</button>
+        ${t("home.rechargeSupportPrefix", "如出现支付异常，")}<button class="inline-link" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
       </p>
     </section>
 
     <section id="links" class="section reveal">
-      <h2>快速入口</h2>
+      <h2>${t("home.sectionLinks", "快速入口")}</h2>
       <div class="quick-links" id="quick-links"></div>
     </section>
 
     <section id="advantage" class="section reveal">
-      <h2>为什么选择 ChongPlus</h2>
+      <h2>${t("home.sectionAdvantage", "为什么选择 ChongPlus")}</h2>
       <div class="grid" id="highlights"></div>
     </section>
 
     <section id="steps" class="section reveal">
-      <h2>4 步完成接入</h2>
+      <h2>${t("home.sectionSteps", "4 步完成接入")}</h2>
       <ol class="steps" id="steps-list"></ol>
     </section>
 
     <section id="faq" class="section reveal">
-      <h2>FAQ / 指南</h2>
+      <h2>${t("home.sectionFaq", "FAQ / 指南")}</h2>
       <div class="guide" id="faq-list"></div>
       <p class="section-note">
-        如遇到支付/兑换/网络异常，<button class="inline-link" type="button" data-action="support">联系客服支持</button>
+        ${t("home.faqSupportPrefix", "如遇到支付/兑换/网络异常，")}<button class="inline-link" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
       </p>
     </section>
   </main>
@@ -200,7 +212,7 @@ app.innerHTML = `
   <footer class="site-footer">
     <p>© ${new Date().getFullYear()} ChongPlus</p>
     <div class="footer-links">
-      <button class="footer-link" type="button" data-action="support">支持</button>
+      <button class="footer-link" type="button" data-action="support">${t("common.support", "支持")}</button>
       <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>
     </div>
   </footer>
@@ -289,4 +301,10 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+const langSwitch = document.querySelector('[data-action="lang-switch"]');
+if (langSwitch) {
+  langSwitch.addEventListener("change", (event) => {
+    setLang(event.target.value, { reload: true });
+  });
+}
 wireSupportModal();

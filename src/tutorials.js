@@ -1,12 +1,15 @@
 import "./style.css";
 import { tutorials } from "./tutorialData.js";
 import { supportModalMarkup, wireSupportModal } from "./supportModal.js";
+import { LANGUAGE_OPTIONS, applyDocumentLang, getCurrentLang, setLang, t } from "./i18n/index.js";
 
 const app = document.querySelector("#app");
 
 const baseUrl = import.meta.env.BASE_URL || "/";
 const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
-const homeHref = normalizedBaseUrl;
+const currentLang = getCurrentLang();
+const homeHref = currentLang === "zh" ? normalizedBaseUrl : `${normalizedBaseUrl}?lang=${currentLang}`;
+applyDocumentLang();
 const resolveAssetUrl = (assetPath) => {
   if (!assetPath || /^(https?:)?\/\//i.test(assetPath) || assetPath.startsWith("data:")) {
     return assetPath;
@@ -59,42 +62,52 @@ function tutorialActionsMarkup(actions = []) {
 app.innerHTML = `
   <div class="noise"></div>
   <header class="site-header">
-    <a class="brand" href="${homeHref}" aria-label="返回首页">
+    <a class="brand" href="${homeHref}" aria-label="${t("tutorialsPage.backHome", "返回首页")}">
       <span class="brand-dot"></span>
       ChongPlus
     </a>
-    <nav class="nav">
-      <a href="${homeHref}#recharge">充值中心</a>
-      <a href="${homeHref}#links">快速入口</a>
-      <a href="${homeHref}#faq">FAQ / 指南</a>
-      <a href="#codex">Codex 教程</a>
-      <a href="#claude">Claude Code</a>
-    </nav>
+    <div class="header-tools">
+      <nav class="nav">
+        <a href="${homeHref}#recharge">${t("nav.recharge", "充值中心")}</a>
+        <a href="${homeHref}#links">${t("nav.links", "快速入口")}</a>
+        <a href="${homeHref}#faq">${t("nav.faq", "FAQ / 指南")}</a>
+        <a href="#codex">${t("tutorialsPage.navCodex", "Codex 教程")}</a>
+        <a href="#claude">${t("tutorialsPage.navClaude", "Claude Code")}</a>
+      </nav>
+      <label class="lang-switch" aria-label="${t("common.language", "语言")}">
+        <span>${t("common.language", "语言")}</span>
+        <select data-action="lang-switch">
+          ${LANGUAGE_OPTIONS.map(
+            (item) => `<option value="${item.code}" ${item.code === currentLang ? "selected" : ""}>${item.label}</option>`
+          ).join("")}
+        </select>
+      </label>
+    </div>
   </header>
 
   <main>
     <section class="hero reveal">
-      <p class="badge">教程</p>
-      <h1>Codex / Claude Code 快速上手</h1>
+      <p class="badge">${t("tutorialsPage.badge", "教程")}</p>
+      <h1>${t("tutorialsPage.title", "Codex / Claude Code 快速上手")}</h1>
       <p class="hero-text">
-        两个教程都在本页集中维护，按步骤完成安装与配置即可开始使用。
+        ${t("tutorialsPage.subtitle", "两个教程都在本页集中维护，按步骤完成安装与配置即可开始使用。")}
       </p>
       <div class="hero-actions">
-        <a class="btn btn-secondary" href="${homeHref}#steps">返回接入流程</a>
-        <button class="btn btn-secondary" type="button" data-action="support">联系客服支持</button>
+        <a class="btn btn-secondary" href="${homeHref}#steps">${t("tutorialsPage.ctaBackSteps", "返回接入流程")}</a>
+        <button class="btn btn-secondary" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
       </div>
     </section>
 
     ${tutorials
       .map(
-        (t) => `
-      <section id="${t.id}" class="section reveal">
-        <h2>${t.title}</h2>
-        <p class="section-note">${t.intro}</p>
+        (tutorialItem) => `
+      <section id="${tutorialItem.id}" class="section reveal">
+        <h2>${t(`tutorialsPage.sections.${tutorialItem.id}.title`, tutorialItem.title)}</h2>
+        <p class="section-note">${t(`tutorialsPage.sections.${tutorialItem.id}.intro`, tutorialItem.intro)}</p>
         <div class="tutorial-actions">
-          ${tutorialActionsMarkup(t.actions)}
+          ${tutorialActionsMarkup(tutorialItem.actions)}
         </div>
-        <ol class="tutorial" id="${t.id}-steps"></ol>
+        <ol class="tutorial" id="${tutorialItem.id}-steps"></ol>
       </section>
     `
       )
@@ -104,7 +117,7 @@ app.innerHTML = `
   <footer class="site-footer">
     <p>© ${new Date().getFullYear()} ChongPlus</p>
     <div class="footer-links">
-      <button class="footer-link" type="button" data-action="support">支持</button>
+      <button class="footer-link" type="button" data-action="support">${t("common.support", "支持")}</button>
       <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>
     </div>
   </footer>
@@ -112,8 +125,8 @@ app.innerHTML = `
   ${supportModalMarkup()}
 `;
 
-for (const t of tutorials) {
-  renderTutorialSteps(`#${t.id}-steps`, t.steps);
+for (const tutorialItem of tutorials) {
+  renderTutorialSteps(`#${tutorialItem.id}-steps`, tutorialItem.steps);
 }
 
 const observer = new IntersectionObserver(
@@ -129,4 +142,10 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+const langSwitch = document.querySelector('[data-action="lang-switch"]');
+if (langSwitch) {
+  langSwitch.addEventListener("change", (event) => {
+    setLang(event.target.value, { reload: true });
+  });
+}
 wireSupportModal();
