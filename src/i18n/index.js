@@ -288,6 +288,164 @@ const messages = {
   }
 };
 
+const tutorialOverlays = {
+  en: {
+    codex: {
+      actions: [{ label: "Download Package" }, { label: "Contact Support" }],
+      steps: [
+        {
+          title: "Register Account",
+          body: 'Website: <a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>'
+        },
+        {
+          title: "Install cc-switch",
+          body:
+            'Option 1: <a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
+            'Option 2: Baidu Netdisk: <a href="https://pan.baidu.com/s/1lHAMdlaSkqSFOMVLTtlFaA?pwd=6su2" target="_blank" rel="noreferrer">CC-Switch</a> (code: 6su2)'
+        },
+        {
+          title: "Install Codex",
+          body: "Complete the installation according to the prompts."
+        },
+        {
+          title: "Create API Key and Import to cc-switch",
+          body: "Create a key, import it into cc-switch, and make sure the group configuration is correct."
+        },
+        {
+          title: "Initialize and Start",
+          body:
+            "Open terminal in your project directory, run the init command, and wait 5-10 seconds. Windows: Win+R then cmd; macOS/Linux: open Terminal."
+        }
+      ]
+    },
+    claude: {
+      actions: [{ label: "Official Quickstart" }, { label: "Contact Support" }],
+      steps: [
+        {
+          title: "Register Account",
+          body:
+            'Register: <a href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">api.chongplus.plus/register</a><br />' +
+            'Website: <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>'
+        },
+        {
+          title: "Install cc-switch",
+          body:
+            'Option 1: <a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
+            'Option 2: Baidu Netdisk: <a href="https://pan.baidu.com/s/1lHAMdlaSkqSFOMVLTtlFaA?pwd=6su2" target="_blank" rel="noreferrer">CC-Switch</a> (code: 6su2)'
+        },
+        {
+          title: "Install Claude Code",
+          body:
+            'Reference: <a href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">Claude Code Quickstart</a>'
+        }
+      ]
+    }
+  },
+  ja: {
+    codex: {
+      actions: [{ label: "インストーラーをダウンロード" }, { label: "サポートへ連絡" }],
+      steps: [
+        {
+          title: "アカウント登録",
+          body: '公式サイト: <a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>'
+        },
+        {
+          title: "cc-switch をインストール",
+          body:
+            '方法1: <a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
+            '方法2: Baidu Netdisk: <a href="https://pan.baidu.com/s/1lHAMdlaSkqSFOMVLTtlFaA?pwd=6su2" target="_blank" rel="noreferrer">CC-Switch</a>（抽出コード: 6su2）'
+        },
+        {
+          title: "Codex をインストール",
+          body: "画面の案内に従ってインストールを完了してください。"
+        },
+        {
+          title: "API Key を作成し cc-switch にインポート",
+          body: "API Key を作成して cc-switch にインポートし、グループ設定が正しいことを確認します。"
+        },
+        {
+          title: "初期化して利用開始",
+          body:
+            "プロジェクトディレクトリでターミナルを開き、初期化コマンドを実行します。5-10 秒待てば開始できます。"
+        }
+      ]
+    },
+    claude: {
+      actions: [{ label: "公式 Quickstart" }, { label: "サポートへ連絡" }],
+      steps: [
+        {
+          title: "アカウント登録",
+          body:
+            '登録: <a href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">api.chongplus.plus/register</a><br />' +
+            '公式サイト: <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>'
+        },
+        {
+          title: "cc-switch をインストール",
+          body:
+            '方法1: <a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
+            '方法2: Baidu Netdisk: <a href="https://pan.baidu.com/s/1lHAMdlaSkqSFOMVLTtlFaA?pwd=6su2" target="_blank" rel="noreferrer">CC-Switch</a>（抽出コード: 6su2）'
+        },
+        {
+          title: "Claude Code をインストール",
+          body:
+            '公式ガイド: <a href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">Claude Code Quickstart</a>'
+        }
+      ]
+    }
+  },
+  ko: {
+    codex: {
+      actions: [{ label: "설치 패키지 다운로드" }, { label: "고객 지원 문의" }],
+      steps: [
+        {
+          title: "계정 등록",
+          body: '공식 사이트: <a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>'
+        },
+        {
+          title: "cc-switch 설치",
+          body:
+            '방법 1: <a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
+            '방법 2: Baidu Netdisk: <a href="https://pan.baidu.com/s/1lHAMdlaSkqSFOMVLTtlFaA?pwd=6su2" target="_blank" rel="noreferrer">CC-Switch</a> (추출 코드: 6su2)'
+        },
+        {
+          title: "Codex 설치",
+          body: "안내에 따라 설치를 완료하세요."
+        },
+        {
+          title: "API Key 생성 및 cc-switch 가져오기",
+          body: "API Key를 생성해 cc-switch에 가져오고, 그룹 설정이 올바른지 확인하세요."
+        },
+        {
+          title: "초기화 후 시작",
+          body: "프로젝트 폴더에서 터미널을 열어 초기화 명령을 실행하고 5-10초 대기한 뒤 사용하세요."
+        }
+      ]
+    },
+    claude: {
+      actions: [{ label: "공식 Quickstart" }, { label: "고객 지원 문의" }],
+      steps: [
+        {
+          title: "계정 등록",
+          body:
+            '등록: <a href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">api.chongplus.plus/register</a><br />' +
+            '공식 사이트: <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>'
+        },
+        {
+          title: "cc-switch 설치",
+          body:
+            '방법 1: <a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
+            '방법 2: Baidu Netdisk: <a href="https://pan.baidu.com/s/1lHAMdlaSkqSFOMVLTtlFaA?pwd=6su2" target="_blank" rel="noreferrer">CC-Switch</a> (추출 코드: 6su2)'
+        },
+        {
+          title: "Claude Code 설치",
+          body:
+            '공식 가이드: <a href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">Claude Code Quickstart</a>'
+        }
+      ]
+    }
+  }
+};
+
 export const LANGUAGE_OPTIONS = [
   { code: "zh", label: "中文" },
   { code: "en", label: "English" },
@@ -368,6 +526,36 @@ export function t(key, fallback = "") {
   const value = readMessage(dict, key);
   if (typeof value === "string") return value;
   return fallback;
+}
+
+export function localizeTutorials(baseTutorials = []) {
+  const overlay = tutorialOverlays[currentLang];
+  if (!overlay) return baseTutorials;
+
+  return baseTutorials.map((tutorial) => {
+    const patch = overlay[tutorial.id];
+    if (!patch) return tutorial;
+
+    const localized = { ...tutorial };
+    if (typeof patch.title === "string") localized.title = patch.title;
+    if (typeof patch.intro === "string") localized.intro = patch.intro;
+
+    if (Array.isArray(tutorial.actions)) {
+      localized.actions = tutorial.actions.map((action, idx) => ({
+        ...action,
+        ...(patch.actions?.[idx] || {})
+      }));
+    }
+
+    if (Array.isArray(tutorial.steps)) {
+      localized.steps = tutorial.steps.map((step, idx) => ({
+        ...step,
+        ...(patch.steps?.[idx] || {})
+      }));
+    }
+
+    return localized;
+  });
 }
 
 export function applyDocumentLang() {

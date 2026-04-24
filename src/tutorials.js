@@ -1,7 +1,7 @@
 import "./style.css";
 import { tutorials } from "./tutorialData.js";
 import { supportModalMarkup, wireSupportModal } from "./supportModal.js";
-import { LANGUAGE_OPTIONS, applyDocumentLang, getCurrentLang, setLang, t } from "./i18n/index.js";
+import { LANGUAGE_OPTIONS, applyDocumentLang, getCurrentLang, localizeTutorials, setLang, t } from "./i18n/index.js";
 
 const app = document.querySelector("#app");
 
@@ -9,6 +9,7 @@ const baseUrl = import.meta.env.BASE_URL || "/";
 const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 const currentLang = getCurrentLang();
 const homeHref = currentLang === "zh" ? normalizedBaseUrl : `${normalizedBaseUrl}?lang=${currentLang}`;
+const localizedTutorials = localizeTutorials(tutorials);
 applyDocumentLang();
 const resolveAssetUrl = (assetPath) => {
   if (!assetPath || /^(https?:)?\/\//i.test(assetPath) || assetPath.startsWith("data:")) {
@@ -98,7 +99,7 @@ app.innerHTML = `
       </div>
     </section>
 
-    ${tutorials
+    ${localizedTutorials
       .map(
         (tutorialItem) => `
       <section id="${tutorialItem.id}" class="section reveal">
@@ -125,7 +126,7 @@ app.innerHTML = `
   ${supportModalMarkup()}
 `;
 
-for (const tutorialItem of tutorials) {
+for (const tutorialItem of localizedTutorials) {
   renderTutorialSteps(`#${tutorialItem.id}-steps`, tutorialItem.steps);
 }
 
