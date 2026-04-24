@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://chongplus.plus/sitemap.xml
+Sitemap: https://docs.chongplus.plus/sitemap.xml
