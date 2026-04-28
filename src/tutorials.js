@@ -32,7 +32,7 @@ function renderTutorialSteps(targetSelector, steps) {
           <h3>${item.title}</h3>
         </div>
         <div class="tutorial-body">
-          <p>${item.body}</p>
+          <div class="tutorial-copy">${item.body}</div>
           ${(item.images || [])
             .map(
               (src) =>
@@ -103,13 +103,18 @@ app.innerHTML = `
     ${localizedTutorials
       .map(
         (tutorialItem) => `
-      <section id="${tutorialItem.id}" class="section reveal">
-        <h2>${t(`tutorialsPage.sections.${tutorialItem.id}.title`, tutorialItem.title)}</h2>
-        <p class="section-note">${t(`tutorialsPage.sections.${tutorialItem.id}.intro`, tutorialItem.intro)}</p>
-        <div class="tutorial-actions">
-          ${tutorialActionsMarkup(tutorialItem.actions)}
+      <section id="${tutorialItem.id}" class="tutorial-section tutorial-section-${tutorialItem.id} reveal">
+        <aside class="tutorial-aside">
+          <span class="badge">${tutorialItem.id === "codex" ? "Codex" : "Claude Code"}</span>
+          <h2>${t(`tutorialsPage.sections.${tutorialItem.id}.title`, tutorialItem.title)}</h2>
+          <p>${t(`tutorialsPage.sections.${tutorialItem.id}.intro`, tutorialItem.intro)}</p>
+          <div class="tutorial-actions">
+            ${tutorialActionsMarkup(tutorialItem.actions)}
+          </div>
+        </aside>
+        <div class="tutorial-content">
+          <ol class="tutorial" id="${tutorialItem.id}-steps"></ol>
         </div>
-        <ol class="tutorial" id="${tutorialItem.id}-steps"></ol>
       </section>
     `
       )
