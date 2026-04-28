@@ -19,24 +19,31 @@ const resolveAssetUrl = (assetPath) => {
 
 const highlights = [
   {
-    title: t("home.highlights.unified.title", "统一入口"),
-    desc: t("home.highlights.unified.desc", "一个 Base URL 对接多模型供应方，减少业务侧 SDK 和配置分叉。")
+    title: t("home.highlights.unified.title", "旗舰模型现货"),
+    desc: t("home.highlights.unified.desc", "已支持 GPT-5.5、Claude Opus 4.7 等高阶模型，按 Token 灵活使用。")
   },
   {
-    title: t("home.highlights.reliable.title", "高可用中转"),
-    desc: t("home.highlights.reliable.desc", "支持流式返回、失败重试与智能回退，保障核心请求稳定在线。")
+    title: t("home.highlights.reliable.title", "稳定 API 接入"),
+    desc: t("home.highlights.reliable.desc", "一个 Base URL 接入主流模型，支持流式返回，减少客户端配置分叉。")
   },
   {
-    title: t("home.highlights.observability.title", "可观测与计费"),
-    desc: t("home.highlights.observability.desc", "清晰查看请求量、成功率、时延与消耗，方便团队做成本治理。")
+    title: t("home.highlights.observability.title", "Token 充值与兑换"),
+    desc: t("home.highlights.observability.desc", "充值、兑换、Key 管理集中处理，方便个人和团队控制模型消耗。")
   }
 ];
 
 const steps = [
   t("home.steps.1", "先注册账号并完成基础设置"),
   t("home.steps.2", "将你的客户端 Base URL 指向 https://api.chongplus.plus/"),
-  t("home.steps.3", "用现有请求结构发起调用"),
-  t("home.steps.4", "在控制台查看监控与用量")
+  t("home.steps.3", "选择 GPT-5.5、Claude Opus 4.7 等模型发起调用"),
+  t("home.steps.4", "在控制台查看 Token 余额、兑换与消耗")
+];
+
+const supportedModels = [
+  { provider: "ChatGPT", model: "GPT-5.5", tone: "chatgpt" },
+  { provider: "Claude", model: "Opus 4.7", tone: "claude" },
+  { provider: "Codex", model: "Coding Agent", tone: "codex" },
+  { provider: "Claude Code", model: "CLI Agent", tone: "claude" }
 ];
 
 const rechargeLinks = [
@@ -139,13 +146,23 @@ const app = document.querySelector("#app");
 const langOptionsMarkup = LANGUAGE_OPTIONS.map(
   (item) => `<option value="${item.code}" ${item.code === currentLang ? "selected" : ""}>${item.label}</option>`
 ).join("");
+const modelCardMarkup = (model, compact = false) => `
+  <article class="model-card ${compact ? "is-compact" : ""}">
+    <span class="model-logo model-logo-${model.tone}" aria-hidden="true">${model.tone === "chatgpt" ? "GPT" : model.tone === "claude" ? "C" : "CX"}</span>
+    <div>
+      <strong>${model.provider}</strong>
+      <small>${model.model}</small>
+    </div>
+  </article>
+`;
 
 app.innerHTML = `
   <div class="noise"></div>
   <header class="site-header">
     <a class="brand" href="https://chongplus.plus/" target="_blank" rel="noreferrer">
-      <span class="brand-dot"></span>
-      ChongPlus
+      <img class="brand-logo" src="${resolveAssetUrl("/logo.jpg")}" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false" />
+      <span class="brand-dot" hidden></span>
+      大象Token
     </a>
     <div class="header-tools">
       <nav class="nav">
@@ -166,11 +183,17 @@ app.innerHTML = `
   <main>
     <section class="hero reveal">
       <div class="hero-copy">
-        <p class="badge">${t("home.badge", "中转 API 官网")}</p>
-        <h1>${t("home.title", "把模型调用变成一条稳定链路")}</h1>
+        <p class="badge">${t("home.badge", "大象Token 模型服务")}</p>
+        <h1>${t("home.title", "前沿模型 Token 接入平台")}</h1>
         <p class="hero-text">
-          ${t("home.subtitle", "chongplus.plus 提供统一、稳定、低改造成本的中转 API 能力，让你的应用更快上线、更稳运行。")}
+          ${t("home.subtitle", "大象Token 提供统一的 Token 充值、Key 管理和稳定 API 接入，已支持 GPT-5.5、Claude Opus 4.7 等前沿模型。")}
         </p>
+        <div class="model-strip" aria-label="${t("home.modelsLabel", "已支持模型")}">
+          <span>${t("home.modelsLabel", "已支持模型")}</span>
+          <div class="model-card-row">
+            ${supportedModels.map((model) => modelCardMarkup(model)).join("")}
+          </div>
+        </div>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">${t("home.ctaRegister", "立即注册")}</a>
           <a class="btn btn-secondary" href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">${t("home.quick.keys.cta", "创建 Key")}</a>
@@ -186,6 +209,12 @@ app.innerHTML = `
         <div class="base-url-box">
           <span>Base URL</span>
           <code>https://api.chongplus.plus/</code>
+        </div>
+        <div class="model-list">
+          <span>${t("home.modelsLabel", "已支持模型")}</span>
+          <div>
+            ${supportedModels.slice(0, 2).map((model) => modelCardMarkup(model, true)).join("")}
+          </div>
         </div>
         <ol class="mini-steps">
           ${steps
@@ -228,7 +257,7 @@ app.innerHTML = `
     <section id="advantage" class="section reveal">
       <div class="section-heading">
         <span>${t("nav.advantage", "优势")}</span>
-        <h2>${t("home.sectionAdvantage", "为什么选择 ChongPlus")}</h2>
+        <h2>${t("home.sectionAdvantage", "为什么选择大象Token")}</h2>
       </div>
       <div class="grid" id="highlights"></div>
     </section>
@@ -254,7 +283,7 @@ app.innerHTML = `
   </main>
 
   <footer class="site-footer">
-    <p>© ${new Date().getFullYear()} ChongPlus</p>
+    <p>© ${new Date().getFullYear()} 大象Token</p>
     <div class="footer-links">
       <button class="footer-link" type="button" data-action="support">${t("common.support", "支持")}</button>
       <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>

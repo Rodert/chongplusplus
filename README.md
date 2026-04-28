@@ -1,13 +1,13 @@
-# ChongPlus Website
+# 大象Token Website
 
-`chongplus.plus` 的官网前端工程，基于 `Vite + HTML/CSS/JS`。
+大象Token 官网前端工程，基于 `Vite + HTML/CSS/JS`，用于展示 Token 充值、Key 管理、模型接入与教程支持。
 
 ## 功能说明
 
-- 官网单页：品牌首屏、优势介绍、接入流程、FAQ、CTA
+- 官网单页：品牌首屏、GPT-5.5 / Claude Opus 4.7 支持、充值入口、接入流程、FAQ、CTA
 - 响应式布局：桌面端和移动端适配
 - GitHub Pages 自动部署：推送 `main` 后自动构建发布
-- 自定义域名：通过 `public/CNAME` 固定为 `chongplus.plus`
+- 自定义域名：通过 `public/CNAME` 固定发布域名
 
 ## 本地开发
 
@@ -59,4 +59,3 @@ npm run preview
 ├── package.json
 └── vite.config.js
 ```
-

@@ -64,8 +64,9 @@ app.innerHTML = `
   <div class="noise"></div>
   <header class="site-header">
     <a class="brand" href="${homeHref}" aria-label="${t("tutorialsPage.backHome", "返回首页")}">
-      <span class="brand-dot"></span>
-      ChongPlus
+      <img class="brand-logo" src="${resolveAssetUrl("/logo.jpg")}" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false" />
+      <span class="brand-dot" hidden></span>
+      大象Token
     </a>
     <div class="header-tools">
       <nav class="nav">
@@ -116,7 +117,7 @@ app.innerHTML = `
   </main>
 
   <footer class="site-footer">
-    <p>© ${new Date().getFullYear()} ChongPlus</p>
+    <p>© ${new Date().getFullYear()} 大象Token</p>
     <div class="footer-links">
       <button class="footer-link" type="button" data-action="support">${t("common.support", "支持")}</button>
       <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>

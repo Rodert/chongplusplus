@@ -79,10 +79,20 @@ main,
   text-decoration: none;
 }
 
+.brand-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #0f766e24;
+  background: #fff;
+  box-shadow: 0 8px 22px #19324d12;
+}
+
 .brand-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 4px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   background: linear-gradient(135deg, var(--primary), var(--accent));
   box-shadow: 0 0 0 4px #0f766e18;
 }
@@ -201,6 +211,87 @@ h1 {
   flex-wrap: wrap;
 }
 
+.model-strip {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.model-strip span,
+.model-list > span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.model-card-row,
+.model-list div {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.model-card {
+  min-width: 168px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62rem;
+  padding: 0.58rem 0.68rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 18px #19324d0a;
+}
+
+.model-card.is-compact {
+  min-width: 0;
+  flex: 1 1 160px;
+  box-shadow: none;
+}
+
+.model-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.model-logo-chatgpt,
+.model-logo-codex {
+  background:
+    radial-gradient(circle at 30% 28%, #ffffff66 0 13%, transparent 14%),
+    linear-gradient(135deg, #10a37f, #087a62);
+}
+
+.model-logo-claude {
+  background:
+    radial-gradient(circle at 68% 26%, #fff2 0 15%, transparent 16%),
+    linear-gradient(135deg, #d97706, #8b5e34);
+}
+
+.model-card div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.model-card strong {
+  color: var(--primary-strong);
+  font-size: 0.94rem;
+  line-height: 1.1;
+}
+
+.model-card small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1;
+}
+
 .btn {
   min-height: 44px;
   display: inline-flex;
@@ -289,6 +380,22 @@ h1 {
   color: var(--primary-strong);
   font-size: 0.95rem;
   font-weight: 800;
+}
+
+.model-list {
+  margin: 0 1rem 1rem;
+  padding: 0.9rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: #fff;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.model-list div {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
 }
 
 .mini-steps,
@@ -830,7 +937,13 @@ html.has-modal body {
     align-items: stretch;
   }
 
+  .model-card-row,
+  .model-list div {
+    flex-direction: column;
+  }
+
   .btn,
+  .model-card,
   .panel-actions a,
   .panel-actions button {
     width: 100%;

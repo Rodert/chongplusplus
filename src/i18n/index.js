@@ -7,7 +7,9 @@ const messages = {
     common: {
       language: "Language",
       support: "Support",
-      contactSupport: "Contact Support"
+      contactSupport: "Contact Support",
+      recommended: "Recommended",
+      backup: "Backup"
     },
     nav: {
       recharge: "Recharge",
@@ -18,39 +20,40 @@ const messages = {
       faq: "FAQ / Guides"
     },
     home: {
-      badge: "API Gateway",
-      title: "Turn Model Calls Into A Stable Pipeline",
+      badge: "Elephant Token Gateway",
+      title: "Token Access For Frontier Models",
       subtitle:
-        "ChongPlus provides a unified and stable API gateway with low migration cost so your app ships faster and runs more reliably.",
+        "Elephant Token provides unified Token recharge, key management, and stable API access for GPT-5.5, Claude Opus 4.7, and more.",
+      modelsLabel: "Supported models",
       ctaRegister: "Register",
       ctaSteps: "View Setup Steps",
       ctaTutorials: "View Tutorials",
       sectionRecharge: "Recharge Center",
       sectionLinks: "Quick Links",
-      sectionAdvantage: "Why ChongPlus",
+      sectionAdvantage: "Why Elephant Token",
       sectionSteps: "4-Step Setup",
       sectionFaq: "FAQ / Guides",
       rechargeSupportPrefix: "If payment fails, ",
       faqSupportPrefix: "If payment/redeem/network issues occur, ",
       highlights: {
         unified: {
-          title: "Unified Entry",
-          desc: "Use one Base URL for multiple model providers and reduce SDK/config branching."
+          title: "Frontier Models Ready",
+          desc: "GPT-5.5, Claude Opus 4.7, and other advanced models are available with flexible Token usage."
         },
         reliable: {
-          title: "High Availability",
-          desc: "Supports streaming, retries, and intelligent fallback to keep requests stable."
+          title: "Stable API Access",
+          desc: "Use one Base URL for mainstream models with streaming support and less client-side configuration."
         },
         observability: {
-          title: "Observability & Billing",
-          desc: "Track request volume, success rate, latency, and usage for better cost control."
+          title: "Token Recharge & Redeem",
+          desc: "Recharge, redeem codes, and manage keys in one place for clearer model cost control."
         }
       },
       steps: {
         1: "Register an account and complete basic setup",
         2: "Point your client Base URL to https://api.chongplus.plus/",
-        3: "Send requests with your existing API structure",
-        4: "Monitor metrics and usage in the console"
+        3: "Call GPT-5.5, Claude Opus 4.7, and other supported models",
+        4: "Check Token balance, redeem codes, and usage in the console"
       },
       recharge: {
         new: { title: "New Store", desc: "Recommended with a more complete experience.", cta: "Recharge" },
@@ -73,7 +76,7 @@ const messages = {
         q2: "Does it support streaming output?",
         a2: "Yes. You can consume streaming responses with your existing logic.",
         q3: "How can I start quickly?",
-        a3: "Visit chongplus.plus and create an API key to begin."
+        a3: "Register, recharge Token, create an API key, and start calling supported models."
       }
     },
     tutorialsPage: {
@@ -102,7 +105,9 @@ const messages = {
     common: {
       language: "言語",
       support: "サポート",
-      contactSupport: "サポートへ連絡"
+      contactSupport: "サポートへ連絡",
+      recommended: "推奨",
+      backup: "予備"
     },
     nav: {
       recharge: "チャージ",
@@ -113,39 +118,40 @@ const messages = {
       faq: "FAQ / ガイド"
     },
     home: {
-      badge: "API 中継サイト",
-      title: "モデル呼び出しを安定した経路に",
+      badge: "Elephant Token ゲートウェイ",
+      title: "先端モデル向け Token アクセス",
       subtitle:
-        "ChongPlus は、低い改修コストで使える統一 API 中継を提供し、より速く安全に運用できます。",
+        "Elephant Token は GPT-5.5、Claude Opus 4.7 などに対応し、Token チャージ、Key 管理、安定した API 接続を提供します。",
+      modelsLabel: "対応モデル",
       ctaRegister: "今すぐ登録",
       ctaSteps: "導入手順を見る",
       ctaTutorials: "チュートリアルを見る",
       sectionRecharge: "チャージセンター",
       sectionLinks: "クイックリンク",
-      sectionAdvantage: "ChongPlus を選ぶ理由",
+      sectionAdvantage: "Elephant Token を選ぶ理由",
       sectionSteps: "4 ステップで導入",
       sectionFaq: "FAQ / ガイド",
       rechargeSupportPrefix: "決済で問題が発生した場合は、",
       faqSupportPrefix: "決済・交換・ネットワークの問題がある場合は、",
       highlights: {
         unified: {
-          title: "統一エントリー",
-          desc: "1 つの Base URL で複数プロバイダーに接続し、SDK/設定の分岐を減らします。"
+          title: "先端モデルに対応",
+          desc: "GPT-5.5、Claude Opus 4.7 などの高性能モデルを Token ベースで柔軟に利用できます。"
         },
         reliable: {
-          title: "高可用な中継",
-          desc: "ストリーミング、再試行、フェイルバックに対応し、安定した呼び出しを維持します。"
+          title: "安定した API 接続",
+          desc: "1 つの Base URL で主流モデルに接続し、ストリーミングにも対応します。"
         },
         observability: {
-          title: "可観測性と課金",
-          desc: "リクエスト数、成功率、遅延、消費量を可視化し、コスト管理を改善します。"
+          title: "Token チャージと交換",
+          desc: "チャージ、交換コード、Key 管理をまとめて行い、モデル利用コストを把握できます。"
         }
       },
       steps: {
         1: "アカウント登録と基本設定を完了する",
         2: "クライアントの Base URL を https://api.chongplus.plus/ に設定する",
-        3: "既存のリクエスト形式で呼び出しを開始する",
-        4: "コンソールで監視と利用量を確認する"
+        3: "GPT-5.5、Claude Opus 4.7 などの対応モデルを呼び出す",
+        4: "コンソールで Token 残高、交換、利用量を確認する"
       },
       recharge: {
         new: { title: "新ストア", desc: "推奨入口。より完全な体験。", cta: "チャージへ" },
@@ -168,7 +174,7 @@ const messages = {
         q2: "ストリーミング出力に対応していますか？",
         a2: "対応しています。既存のストリーミング処理をそのまま利用できます。",
         q3: "試用はどう始めればいいですか？",
-        a3: "chongplus.plus にアクセスし、API Key を作成して開始してください。"
+        a3: "登録、Token チャージ、API Key 作成後、対応モデルを呼び出せます。"
       }
     },
     tutorialsPage: {
@@ -196,7 +202,9 @@ const messages = {
     common: {
       language: "언어",
       support: "지원",
-      contactSupport: "고객 지원 문의"
+      contactSupport: "고객 지원 문의",
+      recommended: "추천",
+      backup: "예비"
     },
     nav: {
       recharge: "충전",
@@ -207,39 +215,40 @@ const messages = {
       faq: "FAQ / 가이드"
     },
     home: {
-      badge: "API 중계 사이트",
-      title: "모델 호출을 안정적인 경로로",
+      badge: "Elephant Token 게이트웨이",
+      title: "프런티어 모델용 Token 액세스",
       subtitle:
-        "ChongPlus는 낮은 전환 비용으로 통합 API 중계 기능을 제공하여 더 빠르고 안정적으로 서비스할 수 있게 합니다.",
+        "Elephant Token은 GPT-5.5, Claude Opus 4.7 등을 지원하며 Token 충전, Key 관리, 안정적인 API 액세스를 제공합니다.",
+      modelsLabel: "지원 모델",
       ctaRegister: "지금 가입",
       ctaSteps: "연동 절차 보기",
       ctaTutorials: "튜토리얼 보기",
       sectionRecharge: "충전 센터",
       sectionLinks: "빠른 링크",
-      sectionAdvantage: "ChongPlus를 선택하는 이유",
+      sectionAdvantage: "Elephant Token을 선택하는 이유",
       sectionSteps: "4단계 연동",
       sectionFaq: "FAQ / 가이드",
       rechargeSupportPrefix: "결제 오류가 발생하면 ",
       faqSupportPrefix: "결제/교환/네트워크 문제가 있으면 ",
       highlights: {
         unified: {
-          title: "통합 진입점",
-          desc: "하나의 Base URL로 여러 모델 공급자를 연결해 SDK/설정 분기를 줄입니다."
+          title: "프런티어 모델 지원",
+          desc: "GPT-5.5, Claude Opus 4.7 등 고급 모델을 Token 기반으로 유연하게 사용할 수 있습니다."
         },
         reliable: {
-          title: "고가용성 중계",
-          desc: "스트리밍, 재시도, 지능형 페일백으로 요청 안정성을 보장합니다."
+          title: "안정적인 API 액세스",
+          desc: "하나의 Base URL로 주요 모델에 연결하고 스트리밍 호출도 사용할 수 있습니다."
         },
         observability: {
-          title: "관측성과 과금",
-          desc: "요청량, 성공률, 지연, 사용량을 확인해 비용 관리를 쉽게 합니다."
+          title: "Token 충전과 교환",
+          desc: "충전, 교환 코드, Key 관리를 한곳에서 처리해 모델 사용 비용을 쉽게 관리합니다."
         }
       },
       steps: {
         1: "계정을 등록하고 기본 설정을 완료합니다",
         2: "클라이언트 Base URL을 https://api.chongplus.plus/ 로 설정합니다",
-        3: "기존 요청 구조로 호출을 시작합니다",
-        4: "콘솔에서 모니터링과 사용량을 확인합니다"
+        3: "GPT-5.5, Claude Opus 4.7 등 지원 모델을 호출합니다",
+        4: "콘솔에서 Token 잔액, 교환, 사용량을 확인합니다"
       },
       recharge: {
         new: { title: "신규 스토어", desc: "권장 경로로 더 완성된 경험을 제공합니다.", cta: "충전하기" },
@@ -262,7 +271,7 @@ const messages = {
         q2: "스트리밍 출력도 지원하나요?",
         a2: "지원합니다. 기존 스트리밍 처리 방식 그대로 사용할 수 있습니다.",
         q3: "어떻게 빠르게 시작하나요?",
-        a3: "chongplus.plus에 접속해 API Key를 생성하면 바로 시작할 수 있습니다."
+        a3: "가입, Token 충전, API Key 생성 후 지원 모델 호출을 시작할 수 있습니다."
       }
     },
     tutorialsPage: {
