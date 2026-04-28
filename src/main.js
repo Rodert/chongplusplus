@@ -165,20 +165,52 @@ app.innerHTML = `
 
   <main>
     <section class="hero reveal">
-      <p class="badge">${t("home.badge", "中转 API 官网")}</p>
-      <h1>${t("home.title", "把模型调用变成一条稳定链路")}</h1>
-      <p class="hero-text">
-        ${t("home.subtitle", "chongplus.plus 提供统一、稳定、低改造成本的中转 API 能力，让你的应用更快上线、更稳运行。")}
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">${t("home.ctaRegister", "立即注册")}</a>
-        <a class="btn btn-secondary" href="#steps">${t("home.ctaSteps", "查看接入步骤")}</a>
-        <a class="btn btn-secondary" href="${tutorialsHref}">${t("home.ctaTutorials", "查看教程")}</a>
+      <div class="hero-copy">
+        <p class="badge">${t("home.badge", "中转 API 官网")}</p>
+        <h1>${t("home.title", "把模型调用变成一条稳定链路")}</h1>
+        <p class="hero-text">
+          ${t("home.subtitle", "chongplus.plus 提供统一、稳定、低改造成本的中转 API 能力，让你的应用更快上线、更稳运行。")}
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">${t("home.ctaRegister", "立即注册")}</a>
+          <a class="btn btn-secondary" href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">${t("home.quick.keys.cta", "创建 Key")}</a>
+          <a class="btn btn-ghost" href="#recharge">${t("nav.recharge", "充值中心")}</a>
+        </div>
       </div>
+
+      <aside class="setup-panel" aria-label="${t("home.sectionSteps", "4 步完成接入")}">
+        <div class="panel-header">
+          <span class="status-dot"></span>
+          <span>${t("home.sectionSteps", "4 步完成接入")}</span>
+        </div>
+        <div class="base-url-box">
+          <span>Base URL</span>
+          <code>https://api.chongplus.plus/</code>
+        </div>
+        <ol class="mini-steps">
+          ${steps
+            .map(
+              (step, idx) => `
+                <li>
+                  <span>${idx + 1}</span>
+                  <p>${step}</p>
+                </li>
+              `
+            )
+            .join("")}
+        </ol>
+        <div class="panel-actions">
+          <a href="${tutorialsHref}">${t("home.ctaTutorials", "查看教程")}</a>
+          <button type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
+        </div>
+      </aside>
     </section>
 
-    <section id="recharge" class="section reveal">
-      <h2>${t("home.sectionRecharge", "充值中心")}</h2>
+    <section id="recharge" class="section section-priority reveal">
+      <div class="section-heading">
+        <span>${t("nav.recharge", "充值中心")}</span>
+        <h2>${t("home.sectionRecharge", "充值中心")}</h2>
+      </div>
       <div class="recharge-grid" id="recharge-links"></div>
       <p class="section-note">
         ${t("home.rechargeSupportPrefix", "如出现支付异常，")}<button class="inline-link" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
@@ -186,22 +218,34 @@ app.innerHTML = `
     </section>
 
     <section id="links" class="section reveal">
-      <h2>${t("home.sectionLinks", "快速入口")}</h2>
+      <div class="section-heading">
+        <span>${t("nav.links", "快速入口")}</span>
+        <h2>${t("home.sectionLinks", "快速入口")}</h2>
+      </div>
       <div class="quick-links" id="quick-links"></div>
     </section>
 
     <section id="advantage" class="section reveal">
-      <h2>${t("home.sectionAdvantage", "为什么选择 ChongPlus")}</h2>
+      <div class="section-heading">
+        <span>${t("nav.advantage", "优势")}</span>
+        <h2>${t("home.sectionAdvantage", "为什么选择 ChongPlus")}</h2>
+      </div>
       <div class="grid" id="highlights"></div>
     </section>
 
     <section id="steps" class="section reveal">
-      <h2>${t("home.sectionSteps", "4 步完成接入")}</h2>
+      <div class="section-heading">
+        <span>${t("nav.steps", "接入流程")}</span>
+        <h2>${t("home.sectionSteps", "4 步完成接入")}</h2>
+      </div>
       <ol class="steps" id="steps-list"></ol>
     </section>
 
     <section id="faq" class="section reveal">
-      <h2>${t("home.sectionFaq", "FAQ / 指南")}</h2>
+      <div class="section-heading">
+        <span>${t("nav.faq", "FAQ / 指南")}</span>
+        <h2>${t("home.sectionFaq", "FAQ / 指南")}</h2>
+      </div>
       <div class="guide" id="faq-list"></div>
       <p class="section-note">
         ${t("home.faqSupportPrefix", "如遇到支付/兑换/网络异常，")}<button class="inline-link" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
@@ -244,7 +288,8 @@ document.querySelector("#steps-list").innerHTML = steps
 document.querySelector("#recharge-links").innerHTML = rechargeLinks
   .map(
     (item, idx) => `
-      <article class="link-card stagger" style="--delay:${idx * 80}ms">
+      <article class="link-card recharge-card ${idx === 0 ? "is-featured" : ""} stagger" style="--delay:${idx * 80}ms">
+        <span class="card-kicker">${idx === 0 ? t("common.recommended", "推荐") : t("common.backup", "备用")}</span>
         <h3>${item.title}</h3>
         <p>${item.desc}</p>
         <a class="btn btn-secondary" href="${item.url}" target="_blank" rel="noreferrer">${item.cta}</a>
@@ -257,6 +302,7 @@ document.querySelector("#quick-links").innerHTML = quickLinks
   .map(
     (item, idx) => `
       <article class="link-card stagger" style="--delay:${idx * 80}ms">
+        <span class="quick-index">${String(idx + 1).padStart(2, "0")}</span>
         <h3>${item.title}</h3>
         <p>${item.desc}</p>
         ${
