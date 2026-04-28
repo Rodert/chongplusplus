@@ -40,10 +40,10 @@ const steps = [
 ];
 
 const supportedModels = [
-  { provider: "ChatGPT", model: "GPT-5.5", tone: "chatgpt" },
-  { provider: "Claude", model: "Opus 4.7", tone: "claude" },
-  { provider: "Codex", model: "Coding Agent", tone: "codex" },
-  { provider: "Claude Code", model: "CLI Agent", tone: "claude" }
+  { provider: "ChatGPT", model: "GPT-5.5", logo: "/chatgpt-logo.jpg" },
+  { provider: "Claude", model: "Opus 4.7", logo: "/claude-logo.jpg" },
+  { provider: "Codex", model: "Coding Agent", logo: "/chatgpt-logo.jpg" },
+  { provider: "Claude Code", model: "CLI Agent", logo: "/claude-logo.jpg" }
 ];
 
 const rechargeLinks = [
@@ -148,7 +148,7 @@ const langOptionsMarkup = LANGUAGE_OPTIONS.map(
 ).join("");
 const modelCardMarkup = (model, compact = false) => `
   <article class="model-card ${compact ? "is-compact" : ""}">
-    <span class="model-logo model-logo-${model.tone}" aria-hidden="true">${model.tone === "chatgpt" ? "GPT" : model.tone === "claude" ? "C" : "CX"}</span>
+    <img class="model-logo" src="${resolveAssetUrl(model.logo)}" alt="" loading="lazy" />
     <div>
       <strong>${model.provider}</strong>
       <small>${model.model}</small>
@@ -182,103 +182,94 @@ app.innerHTML = `
 
   <main>
     <section class="hero reveal">
-      <div class="hero-copy">
-        <p class="badge">${t("home.badge", "大象Token 模型服务")}</p>
-        <h1>${t("home.title", "前沿模型 Token 接入平台")}</h1>
-        <p class="hero-text">
-          ${t("home.subtitle", "大象Token 提供统一的 Token 充值、Key 管理和稳定 API 接入，已支持 GPT-5.5、Claude Opus 4.7 等前沿模型。")}
-        </p>
-        <div class="model-strip" aria-label="${t("home.modelsLabel", "已支持模型")}">
-          <span>${t("home.modelsLabel", "已支持模型")}</span>
-          <div class="model-card-row">
-            ${supportedModels.map((model) => modelCardMarkup(model)).join("")}
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <p class="badge">${t("home.badge", "大象Token 模型服务")}</p>
+          <h1>${t("home.title", "前沿模型 Token 接入平台")}</h1>
+          <p class="hero-text">
+            ${t("home.subtitle", "大象Token 提供统一的 Token 充值、Key 管理和稳定 API 接入，已支持 GPT-5.5、Claude Opus 4.7 等前沿模型。")}
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">${t("home.ctaRegister", "立即注册")}</a>
+            <a class="btn btn-secondary" href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">${t("home.quick.keys.cta", "创建 Key")}</a>
+            <a class="btn btn-ghost" href="#recharge">${t("nav.recharge", "充值中心")}</a>
           </div>
         </div>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">${t("home.ctaRegister", "立即注册")}</a>
-          <a class="btn btn-secondary" href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">${t("home.quick.keys.cta", "创建 Key")}</a>
-          <a class="btn btn-ghost" href="#recharge">${t("nav.recharge", "充值中心")}</a>
-        </div>
-      </div>
 
-      <aside class="setup-panel" aria-label="${t("home.sectionSteps", "4 步完成接入")}">
-        <div class="panel-header">
-          <span class="status-dot"></span>
-          <span>${t("home.sectionSteps", "4 步完成接入")}</span>
-        </div>
-        <div class="base-url-box">
-          <span>Base URL</span>
-          <code>https://api.chongplus.plus/</code>
-        </div>
-        <div class="model-list">
-          <span>${t("home.modelsLabel", "已支持模型")}</span>
-          <div>
-            ${supportedModels.slice(0, 2).map((model) => modelCardMarkup(model, true)).join("")}
+        <aside class="hero-console" aria-label="${t("home.modelsLabel", "已支持模型")}">
+          <div class="console-topline">
+            <span class="status-dot"></span>
+            <span>${t("home.modelsLabel", "已支持模型")}</span>
           </div>
-        </div>
-        <ol class="mini-steps">
-          ${steps
-            .map(
-              (step, idx) => `
-                <li>
-                  <span>${idx + 1}</span>
-                  <p>${step}</p>
-                </li>
-              `
-            )
-            .join("")}
-        </ol>
-        <div class="panel-actions">
-          <a href="${tutorialsHref}">${t("home.ctaTutorials", "查看教程")}</a>
-          <button type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
-        </div>
-      </aside>
+          <div class="featured-models">
+            ${supportedModels.slice(0, 2).map((model) => modelCardMarkup(model)).join("")}
+          </div>
+          <div class="api-console-card">
+            <div>
+              <span>Base URL</span>
+              <code>https://api.chongplus.plus/</code>
+            </div>
+            <strong>Token-ready</strong>
+          </div>
+          <div class="mini-metrics">
+            <div><span>GPT</span><strong>5.5</strong></div>
+            <div><span>Claude</span><strong>Opus 4.7</strong></div>
+            <div><span>Mode</span><strong>Stream</strong></div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section id="recharge" class="section section-priority reveal">
-      <div class="section-heading">
-        <span>${t("nav.recharge", "充值中心")}</span>
-        <h2>${t("home.sectionRecharge", "充值中心")}</h2>
-      </div>
-      <div class="recharge-grid" id="recharge-links"></div>
-      <p class="section-note">
-        ${t("home.rechargeSupportPrefix", "如出现支付异常，")}<button class="inline-link" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
-      </p>
-    </section>
-
-    <section id="links" class="section reveal">
-      <div class="section-heading">
-        <span>${t("nav.links", "快速入口")}</span>
-        <h2>${t("home.sectionLinks", "快速入口")}</h2>
-      </div>
+    <section id="links" class="action-band reveal" aria-label="${t("home.sectionLinks", "快速入口")}">
       <div class="quick-links" id="quick-links"></div>
     </section>
 
-    <section id="advantage" class="section reveal">
-      <div class="section-heading">
-        <span>${t("nav.advantage", "优势")}</span>
-        <h2>${t("home.sectionAdvantage", "为什么选择大象Token")}</h2>
-      </div>
-      <div class="grid" id="highlights"></div>
-    </section>
+    <section class="workspace-grid">
+      <div class="workspace-main">
+        <section id="recharge" class="section section-priority reveal">
+          <div class="section-heading">
+            <span>${t("nav.recharge", "充值中心")}</span>
+            <h2>${t("home.sectionRecharge", "充值中心")}</h2>
+          </div>
+          <div class="recharge-grid" id="recharge-links"></div>
+          <p class="section-note">
+            ${t("home.rechargeSupportPrefix", "如出现支付异常，")}<button class="inline-link" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
+          </p>
+        </section>
 
-    <section id="steps" class="section reveal">
-      <div class="section-heading">
-        <span>${t("nav.steps", "接入流程")}</span>
-        <h2>${t("home.sectionSteps", "4 步完成接入")}</h2>
-      </div>
-      <ol class="steps" id="steps-list"></ol>
-    </section>
+        <section id="advantage" class="section reveal">
+          <div class="section-heading">
+            <span>${t("nav.advantage", "优势")}</span>
+            <h2>${t("home.sectionAdvantage", "为什么选择大象Token")}</h2>
+          </div>
+          <div class="grid" id="highlights"></div>
+        </section>
 
-    <section id="faq" class="section reveal">
-      <div class="section-heading">
-        <span>${t("nav.faq", "FAQ / 指南")}</span>
-        <h2>${t("home.sectionFaq", "FAQ / 指南")}</h2>
+        <section id="faq" class="section reveal">
+          <div class="section-heading">
+            <span>${t("nav.faq", "FAQ / 指南")}</span>
+            <h2>${t("home.sectionFaq", "FAQ / 指南")}</h2>
+          </div>
+          <div class="guide" id="faq-list"></div>
+          <p class="section-note">
+            ${t("home.faqSupportPrefix", "如遇到支付/兑换/网络异常，")}<button class="inline-link" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
+          </p>
+        </section>
       </div>
-      <div class="guide" id="faq-list"></div>
-      <p class="section-note">
-        ${t("home.faqSupportPrefix", "如遇到支付/兑换/网络异常，")}<button class="inline-link" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
-      </p>
+
+      <aside class="workspace-side">
+        <section id="steps" class="section steps-panel reveal">
+          <div class="section-heading">
+            <span>${t("nav.steps", "接入流程")}</span>
+            <h2>${t("home.sectionSteps", "4 步完成接入")}</h2>
+          </div>
+          <ol class="steps" id="steps-list"></ol>
+          <div class="side-actions">
+            <a class="btn btn-secondary" href="${tutorialsHref}">${t("home.ctaTutorials", "查看教程")}</a>
+            <button class="btn btn-secondary" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
+          </div>
+        </section>
+      </aside>
     </section>
   </main>
 
