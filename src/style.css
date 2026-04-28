@@ -689,6 +689,22 @@ h1 {
   grid-template-columns: 320px minmax(0, 1fr);
   gap: 1rem;
   align-items: start;
+  padding: 1rem;
+  border: 1px solid #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 16px 42px #19324d0b;
+}
+
+.tutorial-section-codex {
+  background:
+    radial-gradient(circle at 0 0, #c7f7ee 0, transparent 34%),
+    linear-gradient(145deg, #eefdfb, #f8fbff 68%, #ffffff);
+}
+
+.tutorial-section-claude {
+  background:
+    radial-gradient(circle at 100% 0, #ffd7ad 0, transparent 32%),
+    linear-gradient(145deg, #fff8f1, #fffdf8 62%, #ffffff);
 }
 
 .tutorial-aside {
@@ -701,6 +717,30 @@ h1 {
   border-radius: 24px;
   background: #ffffffd9;
   box-shadow: 0 14px 36px #19324d0b;
+}
+
+.tutorial-section-codex .tutorial-aside {
+  border-color: #0f766e24;
+  background: #f7fffdde;
+}
+
+.tutorial-section-claude .tutorial-aside {
+  border-color: #f9731624;
+  background: #fffaf3e6;
+}
+
+.tutorial-section-claude .badge {
+  border-color: #f9731633;
+  background: var(--accent-soft);
+  color: #b64a08;
+}
+
+.tutorial-section-codex .tutorial-step {
+  border-color: #0f766e18;
+}
+
+.tutorial-section-claude .tutorial-step {
+  border-color: #f973161f;
 }
 
 .tutorial-aside h2 {
