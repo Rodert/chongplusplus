@@ -314,7 +314,9 @@ const tutorialOverlays = {
         },
         {
           title: "Install Codex",
-          body: "Complete the installation according to the prompts."
+          body:
+            'Option 1: open the <a href="https://openai.com/zh-Hans-CN/codex/" target="_blank" rel="noreferrer">official Codex page</a> and download the Codex client if you prefer a standalone app.<br />' +
+            "Option 2: use VS Code, search for Codex in the extension marketplace, and install the extension to use Codex directly in your editor."
         },
         {
           title: "Create API Key and Import to cc-switch",
@@ -366,7 +368,9 @@ const tutorialOverlays = {
         },
         {
           title: "Codex をインストール",
-          body: "画面の案内に従ってインストールを完了してください。"
+          body:
+            '方法1: <a href="https://openai.com/zh-Hans-CN/codex/" target="_blank" rel="noreferrer">Codex 公式ページ</a> から Codex クライアントをダウンロードします。単独クライアントで使いたい場合に適しています。<br />' +
+            "方法2: VS Code の拡張機能マーケットプレイスで Codex を検索し、拡張機能をインストールしてエディタ内で利用します。"
         },
         {
           title: "API Key を作成し cc-switch にインポート",
@@ -418,7 +422,9 @@ const tutorialOverlays = {
         },
         {
           title: "Codex 설치",
-          body: "안내에 따라 설치를 완료하세요."
+          body:
+            '방법 1: <a href="https://openai.com/zh-Hans-CN/codex/" target="_blank" rel="noreferrer">Codex 공식 페이지</a>에서 Codex 클라이언트를 다운로드합니다. 독립 클라이언트를 선호하는 사용자에게 적합합니다.<br />' +
+            "방법 2: VS Code 확장 마켓플레이스에서 Codex를 검색해 확장 프로그램을 설치하고 에디터 안에서 사용합니다."
         },
         {
           title: "API Key 생성 및 cc-switch 가져오기",

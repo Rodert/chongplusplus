@@ -28,7 +28,9 @@ export const codexTutorial = {
     },
     {
       title: "安装 Codex",
-      body: "按提示完成安装。",
+      body:
+        '方案一：打开 <a href="https://openai.com/zh-Hans-CN/codex/" target="_blank" rel="noreferrer">Codex 官方页面</a> 下载 Codex 客户端，适合希望独立使用客户端的用户。<br />' +
+        "方案二：使用 VS Code，在插件商店搜索 Codex 并安装插件，适合直接在编辑器里使用 Codex。",
       images: ["/codex-guide/image2.png"]
     },
     {
