@@ -9,6 +9,8 @@ const baseUrl = import.meta.env.BASE_URL || "/";
 const normalizedBaseUrl = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
 const currentLang = getCurrentLang();
 const homeHref = currentLang === "zh" ? normalizedBaseUrl : `${normalizedBaseUrl}?lang=${currentLang}`;
+const rechargeHref =
+  currentLang === "zh" ? `${normalizedBaseUrl}recharge.html` : `${normalizedBaseUrl}recharge.html?lang=${currentLang}`;
 const localizedTutorials = localizeTutorials(tutorials);
 applyDocumentLang();
 const resolveAssetUrl = (assetPath) => {
@@ -70,7 +72,7 @@ app.innerHTML = `
     </a>
     <div class="header-tools">
       <nav class="nav">
-        <a href="${homeHref}#recharge">${t("nav.recharge", "充值中心")}</a>
+        <a href="${rechargeHref}">${t("nav.recharge", "充值中心")}</a>
         <a href="${homeHref}#links">${t("nav.links", "快速入口")}</a>
         <a href="${homeHref}#faq">${t("nav.faq", "FAQ / 指南")}</a>
         <a href="#codex">${t("tutorialsPage.navCodex", "Codex 教程")}</a>

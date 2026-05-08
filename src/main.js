@@ -8,6 +8,8 @@ const isExternalHref = (href) => /^https?:\/\//i.test(href);
 const currentLang = getCurrentLang();
 const tutorialsHref =
   currentLang === "zh" ? `${normalizedBaseUrl}tutorials.html` : `${normalizedBaseUrl}tutorials.html?lang=${currentLang}`;
+const rechargeHref =
+  currentLang === "zh" ? `${normalizedBaseUrl}recharge.html` : `${normalizedBaseUrl}recharge.html?lang=${currentLang}`;
 applyDocumentLang();
 const resolveAssetUrl = (assetPath) => {
   if (!assetPath || /^(https?:)?\/\//i.test(assetPath) || assetPath.startsWith("data:")) {
@@ -166,7 +168,7 @@ app.innerHTML = `
     </a>
     <div class="header-tools">
       <nav class="nav">
-        <a href="#recharge">${t("nav.recharge", "充值中心")}</a>
+        <a href="${rechargeHref}">${t("nav.recharge", "充值中心")}</a>
         <a href="#links">${t("nav.links", "快速入口")}</a>
         <a href="#advantage">${t("nav.advantage", "优势")}</a>
         <a href="#steps">${t("nav.steps", "接入流程")}</a>
@@ -185,14 +187,14 @@ app.innerHTML = `
       <div class="hero-shell">
         <div class="hero-copy">
           <p class="badge">${t("home.badge", "大象Token 模型服务")}</p>
-          <h1>${t("home.title", "前沿模型 Token 接入平台")}</h1>
+          <h1>${t("home.title", "大象 AI Daxiang AI")}</h1>
           <p class="hero-text">
             ${t("home.subtitle", "大象Token 提供统一的 Token 充值、Key 管理和稳定 API 接入，已支持 GPT-5.5、Claude Opus 4.7 等前沿模型。")}
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">${t("home.ctaRegister", "立即注册")}</a>
             <a class="btn btn-secondary" href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">${t("home.quick.keys.cta", "创建 Key")}</a>
-            <a class="btn btn-ghost" href="#recharge">${t("nav.recharge", "充值中心")}</a>
+            <a class="btn btn-ghost" href="${rechargeHref}">${t("nav.recharge", "充值中心")}</a>
           </div>
         </div>
 
