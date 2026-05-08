@@ -24,7 +24,7 @@ export const codexTutorial = {
       body:
         '方案一：<a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
         '方案二：百度网盘下载：<a href="https://pan.baidu.com/s/1lHAMdlaSkqSFOMVLTtlFaA?pwd=6su2" target="_blank" rel="noreferrer">CC-Switch</a>（提取码：6su2）',
-      images: ["/codex-guide/image1.png"]
+      images: []
     },
     {
       title: "安装 Codex",
@@ -78,10 +78,7 @@ export const claudeCodeTutorial = {
       body:
         '方案一：<a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
         '方案二：百度网盘下载：<a href="https://pan.baidu.com/s/1lHAMdlaSkqSFOMVLTtlFaA?pwd=6su2" target="_blank" rel="noreferrer">CC-Switch</a>（提取码：6su2）。',
-      images: [
-        "/claude-code-guide/page01-img01.png",
-        "/claude-code-guide/page01-img02.png"
-      ]
+      images: []
     },
     {
       title: "安装 Claude Code",
