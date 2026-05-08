@@ -2,6 +2,10 @@ const supportQQ = "1073525378";
 
 export function supportModalMarkup() {
   return `
+  <button class="floating-support" type="button" data-action="support" aria-label="联系客服">
+    <span class="floating-support-icon">QQ</span>
+    <span>联系客服</span>
+  </button>
   <div class="modal" id="support-modal" aria-hidden="true">
     <div class="modal-backdrop" data-close="modal"></div>
     <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="support-title">
@@ -87,4 +91,3 @@ export function wireSupportModal() {
     }
   });
 }
-
