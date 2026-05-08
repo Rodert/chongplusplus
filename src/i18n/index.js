@@ -304,7 +304,20 @@ const tutorialOverlays = {
       steps: [
         {
           title: "Register Account",
-          body: 'Website: <a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>'
+          body:
+            'Register: <a href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">api.chongplus.plus/register</a><br />' +
+            'Website: <a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>'
+        },
+        {
+          title: "Buy Redeem Code",
+          body:
+            'Purchase location: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
+            "Choose the new store or mainland store based on your network environment."
+        },
+        {
+          title: "Enter Redeem Code",
+          body:
+            'After purchase, enter the redeem code here to add balance: <a href="https://api.chongplus.plus/redeem" target="_blank" rel="noreferrer">api.chongplus.plus/redeem</a>'
         },
         {
           title: "Install cc-switch",
@@ -323,7 +336,9 @@ const tutorialOverlays = {
         },
         {
           title: "Create API Key and Import to cc-switch",
-          body: "Create a key, import it into cc-switch, and make sure the group configuration is correct."
+          body:
+            'Create an API key here: <a href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">api.chongplus.plus/keys</a><br />' +
+            "Import it into cc-switch and make sure the group configuration is correct."
         },
         {
           title: "Initialize and Start",
@@ -342,6 +357,17 @@ const tutorialOverlays = {
             'Website: <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>'
         },
         {
+          title: "Buy Redeem Code",
+          body:
+            'Purchase location: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
+            "Choose the new store or mainland store based on your network environment."
+        },
+        {
+          title: "Enter Redeem Code",
+          body:
+            'After purchase, enter the redeem code here to add balance: <a href="https://api.chongplus.plus/redeem" target="_blank" rel="noreferrer">api.chongplus.plus/redeem</a>'
+        },
+        {
           title: "Install cc-switch",
           body:
             'Option 1: <a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
@@ -351,6 +377,12 @@ const tutorialOverlays = {
           title: "Install Claude Code",
           body:
             'Reference: <a href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">Claude Code Quickstart</a>'
+        },
+        {
+          title: "Create API Key and Import Configuration",
+          body:
+            'Create an API key here: <a href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">api.chongplus.plus/keys</a><br />' +
+            "Import it into cc-switch or Claude Code configuration and make sure the group configuration is correct."
         }
       ]
     }
@@ -361,7 +393,20 @@ const tutorialOverlays = {
       steps: [
         {
           title: "アカウント登録",
-          body: '公式サイト: <a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>'
+          body:
+            '登録: <a href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">api.chongplus.plus/register</a><br />' +
+            '公式サイト: <a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>'
+        },
+        {
+          title: "交換コードを購入",
+          body:
+            '購入場所: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
+            "ネットワーク環境に応じて新ストアまたは国内ストアを選択します。"
+        },
+        {
+          title: "交換コードを入力",
+          body:
+            '購入後、交換コードをここで入力して残高に反映します: <a href="https://api.chongplus.plus/redeem" target="_blank" rel="noreferrer">api.chongplus.plus/redeem</a>'
         },
         {
           title: "cc-switch をインストール",
@@ -380,7 +425,9 @@ const tutorialOverlays = {
         },
         {
           title: "API Key を作成し cc-switch にインポート",
-          body: "API Key を作成して cc-switch にインポートし、グループ設定が正しいことを確認します。"
+          body:
+            'API Key はここで作成します: <a href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">api.chongplus.plus/keys</a><br />' +
+            "作成後 cc-switch にインポートし、グループ設定が正しいことを確認します。"
         },
         {
           title: "初期化して利用開始",
@@ -399,6 +446,17 @@ const tutorialOverlays = {
             '公式サイト: <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>'
         },
         {
+          title: "交換コードを購入",
+          body:
+            '購入場所: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
+            "ネットワーク環境に応じて新ストアまたは国内ストアを選択します。"
+        },
+        {
+          title: "交換コードを入力",
+          body:
+            '購入後、交換コードをここで入力して残高に反映します: <a href="https://api.chongplus.plus/redeem" target="_blank" rel="noreferrer">api.chongplus.plus/redeem</a>'
+        },
+        {
           title: "cc-switch をインストール",
           body:
             '方法1: <a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
@@ -408,6 +466,12 @@ const tutorialOverlays = {
           title: "Claude Code をインストール",
           body:
             '公式ガイド: <a href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">Claude Code Quickstart</a>'
+        },
+        {
+          title: "API Key を作成して設定にインポート",
+          body:
+            'API Key はここで作成します: <a href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">api.chongplus.plus/keys</a><br />' +
+            "作成後 cc-switch または Claude Code の設定にインポートし、グループ設定が正しいことを確認します。"
         }
       ]
     }
@@ -418,7 +482,20 @@ const tutorialOverlays = {
       steps: [
         {
           title: "계정 등록",
-          body: '공식 사이트: <a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>'
+          body:
+            '등록: <a href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">api.chongplus.plus/register</a><br />' +
+            '공식 사이트: <a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>'
+        },
+        {
+          title: "교환 코드 구매",
+          body:
+            '구매 위치: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
+            "네트워크 환경에 따라 신규 스토어 또는 국내 스토어를 선택하세요."
+        },
+        {
+          title: "교환 코드 입력",
+          body:
+            '구매 후 받은 교환 코드를 여기서 입력해 잔액으로 전환하세요: <a href="https://api.chongplus.plus/redeem" target="_blank" rel="noreferrer">api.chongplus.plus/redeem</a>'
         },
         {
           title: "cc-switch 설치",
@@ -437,7 +514,9 @@ const tutorialOverlays = {
         },
         {
           title: "API Key 생성 및 cc-switch 가져오기",
-          body: "API Key를 생성해 cc-switch에 가져오고, 그룹 설정이 올바른지 확인하세요."
+          body:
+            'API Key는 여기에서 생성합니다: <a href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">api.chongplus.plus/keys</a><br />' +
+            "생성 후 cc-switch에 가져오고, 그룹 설정이 올바른지 확인하세요."
         },
         {
           title: "초기화 후 시작",
@@ -455,6 +534,17 @@ const tutorialOverlays = {
             '공식 사이트: <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>'
         },
         {
+          title: "교환 코드 구매",
+          body:
+            '구매 위치: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
+            "네트워크 환경에 따라 신규 스토어 또는 국내 스토어를 선택하세요."
+        },
+        {
+          title: "교환 코드 입력",
+          body:
+            '구매 후 받은 교환 코드를 여기서 입력해 잔액으로 전환하세요: <a href="https://api.chongplus.plus/redeem" target="_blank" rel="noreferrer">api.chongplus.plus/redeem</a>'
+        },
+        {
           title: "cc-switch 설치",
           body:
             '방법 1: <a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
@@ -464,6 +554,12 @@ const tutorialOverlays = {
           title: "Claude Code 설치",
           body:
             '공식 가이드: <a href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">Claude Code Quickstart</a>'
+        },
+        {
+          title: "API Key 생성 및 설정 가져오기",
+          body:
+            'API Key는 여기에서 생성합니다: <a href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">api.chongplus.plus/keys</a><br />' +
+            "생성 후 cc-switch 또는 Claude Code 설정에 가져오고, 그룹 설정이 올바른지 확인하세요."
         }
       ]
     }

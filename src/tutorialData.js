@@ -16,7 +16,22 @@ export const codexTutorial = {
   steps: [
     {
       title: "注册账号",
-      body: '官网地址：<a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>',
+      body:
+        '注册地址：<a href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">api.chongplus.plus/register</a><br />' +
+        '官网地址：<a href="https://api.chongplus.plus/" target="_blank" rel="noreferrer">api.chongplus.plus</a>',
+      images: []
+    },
+    {
+      title: "购买兑换码",
+      body:
+        '兑换码购买位置：<a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
+        "进入充值中心后，根据你的网络环境选择新商城或国内商城。",
+      images: []
+    },
+    {
+      title: "输入兑换码",
+      body:
+        '购买后拿到兑换码，进入兑换入口输入兑换码完成余额兑换：<a href="https://api.chongplus.plus/redeem" target="_blank" rel="noreferrer">api.chongplus.plus/redeem</a>',
       images: []
     },
     {
@@ -38,7 +53,9 @@ export const codexTutorial = {
     },
     {
       title: "创建 API Key 并导入 cc-switch",
-      body: "创建密钥后导入到 cc-switch，并确保分组配置正确。",
+      body:
+        '进入 Key 管理页面创建 API Key：<a href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">api.chongplus.plus/keys</a><br />' +
+        "创建后导入到 cc-switch，并确保分组配置正确。",
       images: ["/codex-guide/image3.png"]
     },
     {
@@ -74,6 +91,19 @@ export const claudeCodeTutorial = {
       images: []
     },
     {
+      title: "购买兑换码",
+      body:
+        '兑换码购买位置：<a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
+        "进入充值中心后，根据你的网络环境选择新商城或国内商城。",
+      images: []
+    },
+    {
+      title: "输入兑换码",
+      body:
+        '购买后拿到兑换码，进入兑换入口输入兑换码完成余额兑换：<a href="https://api.chongplus.plus/redeem" target="_blank" rel="noreferrer">api.chongplus.plus/redeem</a>',
+      images: []
+    },
+    {
       title: "安装 cc-switch",
       body:
         '方案一：<a href="https://github.com/farion1231/cc-switch/releases/" target="_blank" rel="noreferrer">GitHub Releases</a><br />' +
@@ -84,6 +114,13 @@ export const claudeCodeTutorial = {
       title: "安装 Claude Code",
       body:
         '参考官方快速开始：<a href="https://code.claude.com/docs/zh-CN/quickstart" target="_blank" rel="noreferrer">Claude Code Quickstart</a>',
+      images: []
+    },
+    {
+      title: "创建 API Key 并导入配置",
+      body:
+        '进入 Key 管理页面创建 API Key：<a href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">api.chongplus.plus/keys</a><br />' +
+        "创建后导入到 cc-switch 或 Claude Code 配置中，并确保分组配置正确。",
       images: []
     }
   ]
