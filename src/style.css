@@ -980,9 +980,9 @@ h1 {
 }
 
 .recharge-hero {
-  min-height: 640px;
+  min-height: 620px;
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(420px, 0.72fr);
+  grid-template-columns: minmax(0, 0.82fr) minmax(520px, 1.18fr);
   align-items: center;
   gap: clamp(1.4rem, 3vw, 3rem);
   padding: clamp(1.5rem, 4vw, 4rem);
@@ -1072,7 +1072,7 @@ h1 {
 
 .recharge-channel-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
@@ -1080,23 +1080,24 @@ h1 {
 .trust-item {
   display: grid;
   align-content: start;
-  gap: 0.68rem;
-  min-height: 210px;
-  padding: 1.1rem;
+  gap: 0.95rem;
+  min-height: 320px;
+  padding: clamp(1.15rem, 2.4vw, 2rem);
   border: 1px solid var(--line-soft);
-  border-radius: 18px;
+  border-radius: 22px;
   background: #fff;
 }
 
 .recharge-channel.is-primary {
   border-color: #0f766e33;
-  background: linear-gradient(145deg, #f1fffd, #fff);
+  background: linear-gradient(145deg, #eafffb, #fff);
 }
 
 .recharge-channel h3,
 .trust-item h3 {
   margin: 0;
-  font-size: 1.18rem;
+  font-size: clamp(1.75rem, 3vw, 2.65rem);
+  line-height: 1.04;
 }
 
 .recharge-channel p,
@@ -1108,8 +1109,10 @@ h1 {
 }
 
 .recharge-channel .btn {
-  width: fit-content;
+  width: 100%;
+  min-height: 54px;
   margin-top: auto;
+  font-size: 1rem;
 }
 
 .recharge-trust-band {
