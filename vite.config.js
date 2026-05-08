@@ -6,6 +6,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
+        claudeCode: "claude-code.html",
+        codex: "codex.html",
         main: "index.html",
         recharge: "recharge.html",
         tutorials: "tutorials.html"

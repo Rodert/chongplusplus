@@ -11,6 +11,9 @@ const currentLang = getCurrentLang();
 const homeHref = currentLang === "zh" ? normalizedBaseUrl : `${normalizedBaseUrl}?lang=${currentLang}`;
 const rechargeHref =
   currentLang === "zh" ? `${normalizedBaseUrl}recharge.html` : `${normalizedBaseUrl}recharge.html?lang=${currentLang}`;
+const codexHref = currentLang === "zh" ? `${normalizedBaseUrl}codex.html` : `${normalizedBaseUrl}codex.html?lang=${currentLang}`;
+const claudeHref =
+  currentLang === "zh" ? `${normalizedBaseUrl}claude-code.html` : `${normalizedBaseUrl}claude-code.html?lang=${currentLang}`;
 const localizedTutorials = localizeTutorials(tutorials);
 applyDocumentLang();
 const resolveAssetUrl = (assetPath) => {
@@ -21,46 +24,15 @@ const resolveAssetUrl = (assetPath) => {
   return `${normalizedBaseUrl}${cleanPath}`;
 };
 
-function renderTutorialSteps(targetSelector, steps) {
-  const target = document.querySelector(targetSelector);
-  if (!target) return;
-
-  target.innerHTML = steps
-    .map(
-      (item, idx) => `
-      <li class="tutorial-step stagger" style="--delay:${idx * 80}ms">
-        <div class="tutorial-head">
-          <span class="tutorial-index">${String(idx + 1).padStart(2, "0")}</span>
-          <h3>${item.title}</h3>
-        </div>
-        <div class="tutorial-body">
-          <div class="tutorial-copy">${item.body}</div>
-          ${(item.images || [])
-            .map(
-              (src) =>
-                `<a class="guide-image-link" href="${resolveAssetUrl(src)}" target="_blank" rel="noreferrer"><img class="guide-image" src="${resolveAssetUrl(src)}" alt="" loading="lazy" /></a>`
-            )
-            .join("")}
-        </div>
-      </li>
-    `
-    )
-    .join("");
-}
-
-function tutorialActionsMarkup(actions = []) {
-  return actions
-    .map((a) => {
-      if (a.href) {
-        return `<a class="btn btn-secondary" href="${a.href}" target="_blank" rel="noreferrer">${a.label}</a>`;
-      }
-      if (a.action) {
-        return `<button class="btn btn-secondary" type="button" data-action="${a.action}">${a.label}</button>`;
-      }
-      return "";
-    })
-    .join("");
-}
+const tutorialCards = localizedTutorials.map((tutorialItem) => ({
+  ...tutorialItem,
+  logo: tutorialItem.id === "codex" ? "/chatgpt-logo.jpg" : "/claude-logo.jpg",
+  href: tutorialItem.id === "codex" ? codexHref : claudeHref,
+  label:
+    tutorialItem.id === "codex"
+      ? t("tutorialsPage.navCodex", "Codex 教程")
+      : t("tutorialsPage.navClaude", "Claude Code")
+}));
 
 app.innerHTML = `
   <div class="noise"></div>
@@ -75,8 +47,8 @@ app.innerHTML = `
         <a href="${rechargeHref}">${t("nav.recharge", "充值中心")}</a>
         <a href="${homeHref}#links">${t("nav.links", "快速入口")}</a>
         <a href="${homeHref}#faq">${t("nav.faq", "FAQ / 指南")}</a>
-        <a href="#codex">${t("tutorialsPage.navCodex", "Codex 教程")}</a>
-        <a href="#claude">${t("tutorialsPage.navClaude", "Claude Code")}</a>
+        <a href="${codexHref}">${t("tutorialsPage.navCodex", "Codex 教程")}</a>
+        <a href="${claudeHref}">${t("tutorialsPage.navClaude", "Claude Code")}</a>
       </nav>
       <label class="lang-switch" aria-label="${t("common.language", "语言")}">
         <span>${t("common.language", "语言")}</span>
@@ -89,12 +61,12 @@ app.innerHTML = `
     </div>
   </header>
 
-  <main>
-    <section class="hero reveal">
+  <main class="tutorial-index-page">
+    <section class="hero tutorial-index-hero reveal">
       <p class="badge">${t("tutorialsPage.badge", "教程")}</p>
       <h1>${t("tutorialsPage.title", "Codex / Claude Code 快速上手")}</h1>
       <p class="hero-text">
-        ${t("tutorialsPage.subtitle", "两个教程都在本页集中维护，按步骤完成安装与配置即可开始使用。")}
+        选择对应工具进入独立教程页面。后续新增教程时，会继续作为单独模块放在这里。
       </p>
       <div class="hero-actions">
         <a class="btn btn-secondary" href="${homeHref}#steps">${t("tutorialsPage.ctaBackSteps", "返回接入流程")}</a>
@@ -102,25 +74,23 @@ app.innerHTML = `
       </div>
     </section>
 
-    ${localizedTutorials
+    <section class="tutorial-entry-list reveal" aria-label="教程列表">
+      ${tutorialCards
       .map(
-        (tutorialItem) => `
-      <section id="${tutorialItem.id}" class="tutorial-section tutorial-section-${tutorialItem.id} reveal">
-        <aside class="tutorial-aside">
-          <span class="badge">${tutorialItem.id === "codex" ? "Codex" : "Claude Code"}</span>
-          <h2>${t(`tutorialsPage.sections.${tutorialItem.id}.title`, tutorialItem.title)}</h2>
-          <p>${t(`tutorialsPage.sections.${tutorialItem.id}.intro`, tutorialItem.intro)}</p>
-          <div class="tutorial-actions">
-            ${tutorialActionsMarkup(tutorialItem.actions)}
+        (tutorialItem, idx) => `
+        <a class="tutorial-entry-card tutorial-entry-${tutorialItem.id} stagger" style="--delay:${idx * 80}ms" href="${tutorialItem.href}">
+          <img class="tutorial-entry-logo" src="${resolveAssetUrl(tutorialItem.logo)}" alt="" />
+          <div class="tutorial-entry-copy">
+            <span class="badge">${tutorialItem.label}</span>
+            <h2>${t(`tutorialsPage.sections.${tutorialItem.id}.title`, tutorialItem.title)}</h2>
+            <p>${t(`tutorialsPage.sections.${tutorialItem.id}.intro`, tutorialItem.intro)}</p>
           </div>
-        </aside>
-        <div class="tutorial-content">
-          <ol class="tutorial" id="${tutorialItem.id}-steps"></ol>
-        </div>
-      </section>
-    `
+          <span class="tutorial-entry-action">查看教程</span>
+        </a>
+      `
       )
       .join("")}
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -133,10 +103,6 @@ app.innerHTML = `
 
   ${supportModalMarkup()}
 `;
-
-for (const tutorialItem of localizedTutorials) {
-  renderTutorialSteps(`#${tutorialItem.id}-steps`, tutorialItem.steps);
-}
 
 const observer = new IntersectionObserver(
   (entries) => {
