@@ -40,7 +40,7 @@ app.innerHTML = `
     <a class="brand" href="${homeHref}" aria-label="${t("tutorialsPage.backHome", "返回首页")}">
       <img class="brand-logo" src="${resolveAssetUrl("/logo.jpg")}" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false" />
       <span class="brand-dot" hidden></span>
-      大象Token
+      大象 AI
     </a>
     <div class="header-tools">
       <nav class="nav">
@@ -94,7 +94,7 @@ app.innerHTML = `
   </main>
 
   <footer class="site-footer">
-    <p>© ${new Date().getFullYear()} 大象Token</p>
+    <p>© ${new Date().getFullYear()} 大象 AI</p>
     <div class="footer-links">
       <button class="footer-link" type="button" data-action="support">${t("common.support", "支持")}</button>
       <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>

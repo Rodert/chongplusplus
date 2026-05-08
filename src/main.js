@@ -21,72 +21,103 @@ const resolveAssetUrl = (assetPath) => {
 
 const highlights = [
   {
-    title: t("home.highlights.unified.title", "旗舰模型现货"),
-    desc: t("home.highlights.unified.desc", "已支持 GPT-5.5、Claude Opus 4.7 等高阶模型，按 Token 灵活使用。")
+    title: t("home.highlights.unified.title", "统一模型接入"),
+    desc: t("home.highlights.unified.desc", "兼容 OpenAI API 调用方式，一套接口接入多家主流模型，降低开发与切换成本。")
   },
   {
-    title: t("home.highlights.reliable.title", "稳定 API 接入"),
-    desc: t("home.highlights.reliable.desc", "一个 Base URL 接入主流模型，支持流式返回，减少客户端配置分叉。")
+    title: t("home.highlights.reliable.title", "稳定 API 中转"),
+    desc: t("home.highlights.reliable.desc", "优化访问链路，支持流式输出、高频请求和长时间任务调用。")
   },
   {
-    title: t("home.highlights.observability.title", "Token 充值与兑换"),
-    desc: t("home.highlights.observability.desc", "充值、兑换、Key 管理集中处理，方便个人和团队控制模型消耗。")
+    title: t("home.highlights.observability.title", "Key 与额度管理"),
+    desc: t("home.highlights.observability.desc", "支持多 Key 管理、额度分配、用量统计和消费记录查询。")
+  },
+  {
+    title: "开发者工具友好",
+    desc: "适配 Cursor、Claude Code、Cherry Studio、OpenAI SDK 等主流开发工具。"
   }
 ];
 
 const steps = [
-  t("home.steps.1", "先注册账号并完成基础设置"),
-  t("home.steps.2", "将你的客户端 Base URL 指向 https://api.chongplus.plus/"),
-  t("home.steps.3", "选择 GPT-5.5、Claude Opus 4.7 等模型发起调用"),
-  t("home.steps.4", "在控制台查看 Token 余额、兑换与消耗")
+  t("home.steps.1", "注册账号并完成充值或额度准备"),
+  t("home.steps.2", "创建 API Key，按项目或团队分配使用"),
+  t("home.steps.3", "将客户端 Base URL 指向 https://api.chongplus.plus/"),
+  t("home.steps.4", "按 OpenAI 兼容方式调用 GPT、Claude、Gemini、Codex 等模型")
 ];
 
 const supportedModels = [
-  { provider: "ChatGPT", model: "GPT-5.5", logo: "/chatgpt-logo.jpg" },
-  { provider: "Claude", model: "Opus 4.7", logo: "/claude-logo.jpg" },
+  { provider: "GPT 系列", model: "写作 / 编程 / Agent", logo: "/chatgpt-logo.jpg" },
+  { provider: "Claude 系列", model: "长文本 / 代码 / 分析", logo: "/claude-logo.jpg" },
   { provider: "Codex", model: "Coding Agent", logo: "/chatgpt-logo.jpg" },
   { provider: "Claude Code", model: "CLI Agent", logo: "/claude-logo.jpg" }
 ];
 
-const rechargeLinks = [
+const modelRows = [
   {
-    title: t("home.recharge.new.title", "新商城"),
-    desc: t("home.recharge.new.desc", "推荐入口，体验更完整。"),
-    url: "https://shop.chongplus.plus/",
-    cta: t("home.recharge.new.cta", "前往充值")
+    series: "GPT 系列",
+    status: "支持平台可用版本",
+    scene: "编程、写作、Agent、通用推理"
   },
   {
-    title: t("home.recharge.cn.title", "国内商城"),
-    desc: t("home.recharge.cn.desc", "国内网络环境可优先使用。"),
-    url: "http://wx.wukongkt.vip:28088/",
-    cta: t("home.recharge.cn.cta", "前往充值")
+    series: "Claude 系列",
+    status: "支持 Opus / Sonnet 等系列",
+    scene: "长文本、代码分析、复杂任务"
+  },
+  {
+    series: "Gemini 系列",
+    status: "支持主流模型系列",
+    scene: "多模态、内容理解、知识处理"
+  },
+  {
+    series: "Codex / Claude Code",
+    status: "支持 AI 编程工具接入",
+    scene: "代码代理、CLI 工具、开发工作流"
+  }
+];
+
+const trustItems = [
+  {
+    title: "稳定可用",
+    desc: "持续优化模型访问链路，适合日常开发、工具调用和团队使用。"
+  },
+  {
+    title: "用量透明",
+    desc: "支持余额、消耗记录和调用情况查询，方便控制成本。"
+  },
+  {
+    title: "快速接入",
+    desc: "兼容主流 API 调用方式，减少迁移和切换成本。"
+  },
+  {
+    title: "售后支持",
+    desc: "提供接入指导、问题排查和使用保障。"
   }
 ];
 
 const quickLinks = [
   {
     title: t("home.quick.register.title", "注册账号"),
-    desc: t("home.quick.register.desc", "新用户先完成注册，再进入后续流程。"),
+    desc: t("home.quick.register.desc", "创建账号后即可准备 Key、额度和模型接入。"),
     url: "https://api.chongplus.plus/register",
     cta: t("home.quick.register.cta", "前往注册")
   },
   {
-    title: t("home.quick.tutorials.title", "Codex / Claude Code 教程"),
-    desc: t("home.quick.tutorials.desc", "两套教程集中在独立页面，按步骤完成安装与配置。"),
-    url: tutorialsHref,
-    cta: t("home.quick.tutorials.cta", "查看教程")
-  },
-  {
-    title: t("home.quick.keys.title", "创建 Key"),
-    desc: t("home.quick.keys.desc", "登录后创建 API Key 用于调用接口。"),
+    title: t("home.quick.keys.title", "创建 API Key"),
+    desc: t("home.quick.keys.desc", "登录后创建 API Key，用于应用、工具或团队调用。"),
     url: "https://api.chongplus.plus/keys",
     cta: t("home.quick.keys.cta", "创建 Key")
   },
   {
-    title: t("home.quick.redeem.title", "兑换入口"),
-    desc: t("home.quick.redeem.desc", "已有兑换码可在这里完成兑换。"),
-    url: "https://api.chongplus.plus/redeem",
-    cta: t("home.quick.redeem.cta", "前往兑换")
+    title: t("home.quick.tutorials.title", "接入教程"),
+    desc: t("home.quick.tutorials.desc", "查看 Codex、Claude Code 等工具的独立接入教程。"),
+    url: tutorialsHref,
+    cta: t("home.quick.tutorials.cta", "查看教程")
+  },
+  {
+    title: t("home.recharge.new.title", "充值中心"),
+    desc: t("home.recharge.new.desc", "选择新商城或国内商城，完成 Token 充值。"),
+    url: rechargeHref,
+    cta: t("home.recharge.new.cta", "获取充值方式")
   },
   {
     title: t("home.quick.support.title", "支持"),
@@ -107,7 +138,11 @@ const faqs = [
   },
   {
     q: t("home.faq.q3", "如何开始试用？"),
-    a: t("home.faq.a3", "访问 chongplus.plus，创建密钥后即可开始调用。")
+    a: t("home.faq.a3", "注册账号、准备额度、创建 API Key 后，即可按 OpenAI 兼容方式发起调用。")
+  },
+  {
+    q: "模型名称以哪里为准？",
+    a: "支持 GPT、Claude、Gemini、Codex 等主流前沿模型系列，具体可用模型以平台模型列表为准。"
   }
 ];
 
@@ -164,15 +199,15 @@ app.innerHTML = `
     <a class="brand" href="https://chongplus.plus/" target="_blank" rel="noreferrer">
       <img class="brand-logo" src="${resolveAssetUrl("/logo.jpg")}" alt="" onerror="this.hidden=true;this.nextElementSibling.hidden=false" />
       <span class="brand-dot" hidden></span>
-      大象Token
+      Daxiang AI
     </a>
     <div class="header-tools">
       <nav class="nav">
-        <a href="${rechargeHref}">${t("nav.recharge", "充值中心")}</a>
-        <a href="#links">${t("nav.links", "快速入口")}</a>
-        <a href="#advantage">${t("nav.advantage", "优势")}</a>
+        <a href="#advantage">${t("nav.advantage", "核心能力")}</a>
+        <a href="#models">支持模型</a>
         <a href="#steps">${t("nav.steps", "接入流程")}</a>
         <a href="${tutorialsHref}">${t("nav.tutorials", "教程")}</a>
+        <a href="${rechargeHref}">${t("nav.recharge", "充值中心")}</a>
         <a href="#faq">${t("nav.faq", "FAQ / 指南")}</a>
       </nav>
       <label class="lang-switch" aria-label="${t("common.language", "语言")}">
@@ -186,15 +221,15 @@ app.innerHTML = `
     <section class="hero reveal">
       <div class="hero-shell">
         <div class="hero-copy">
-          <p class="badge">${t("home.badge", "大象Token 模型服务")}</p>
-          <h1>${t("home.title", "大象 AI Daxiang AI")}</h1>
+          <p class="badge">${t("home.badge", "Daxiang AI 模型网关")}</p>
+          <h1>${t("home.title", "连接全球前沿模型的统一 API 网关")}</h1>
           <p class="hero-text">
-            ${t("home.subtitle", "大象Token 提供统一的 Token 充值、Key 管理和稳定 API 接入，已支持 GPT-5.5、Claude Opus 4.7 等前沿模型。")}
+            ${t("home.subtitle", "面向开发者、团队和 AI 应用，Daxiang AI 提供统一模型接入、API Key 管理、Token 充值、用量统计与稳定中转服务。一套接口，即可快速接入 GPT、Claude、Gemini、Codex 等主流模型能力。")}
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">${t("home.ctaRegister", "立即注册")}</a>
-            <a class="btn btn-secondary" href="https://api.chongplus.plus/keys" target="_blank" rel="noreferrer">${t("home.quick.keys.cta", "创建 Key")}</a>
-            <a class="btn btn-ghost" href="${rechargeHref}">${t("nav.recharge", "充值中心")}</a>
+            <a class="btn btn-primary" href="https://api.chongplus.plus/register" target="_blank" rel="noreferrer">立即接入 API</a>
+            <a class="btn btn-secondary" href="${tutorialsHref}">查看接入教程</a>
+            <a class="btn btn-ghost" href="${rechargeHref}">获取充值方式</a>
           </div>
         </div>
 
@@ -211,12 +246,12 @@ app.innerHTML = `
               <span>Base URL</span>
               <code>https://api.chongplus.plus/</code>
             </div>
-            <strong>Token-ready</strong>
+            <strong>API Gateway</strong>
           </div>
           <div class="mini-metrics">
-            <div><span>GPT</span><strong>5.5</strong></div>
-            <div><span>Claude</span><strong>Opus 4.7</strong></div>
-            <div><span>Mode</span><strong>Stream</strong></div>
+            <div><span>接入</span><strong>统一 API</strong></div>
+            <div><span>管理</span><strong>Key / 用量</strong></div>
+            <div><span>模式</span><strong>Stream</strong></div>
           </div>
         </aside>
       </div>
@@ -228,23 +263,21 @@ app.innerHTML = `
 
     <section class="workspace-grid">
       <div class="workspace-main">
-        <section id="recharge" class="section section-priority reveal">
-          <div class="section-heading">
-            <span>${t("nav.recharge", "充值中心")}</span>
-            <h2>${t("home.sectionRecharge", "充值中心")}</h2>
-          </div>
-          <div class="recharge-grid" id="recharge-links"></div>
-          <p class="section-note">
-            ${t("home.rechargeSupportPrefix", "如出现支付异常，")}<button class="inline-link" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
-          </p>
-        </section>
-
         <section id="advantage" class="section reveal">
           <div class="section-heading">
-            <span>${t("nav.advantage", "优势")}</span>
-            <h2>${t("home.sectionAdvantage", "为什么选择大象Token")}</h2>
+            <span>${t("nav.advantage", "核心能力")}</span>
+            <h2>${t("home.sectionAdvantage", "为模型接入而设计的基础能力")}</h2>
           </div>
           <div class="grid" id="highlights"></div>
+        </section>
+
+        <section id="models" class="section reveal">
+          <div class="section-heading">
+            <span>支持模型</span>
+            <h2>覆盖主流前沿模型系列</h2>
+          </div>
+          <div class="model-matrix" id="model-matrix"></div>
+          <p class="section-note">具体可用模型以平台控制台实际模型列表为准。</p>
         </section>
 
         <section id="faq" class="section reveal">
@@ -271,12 +304,20 @@ app.innerHTML = `
             <button class="btn btn-secondary" type="button" data-action="support">${t("common.contactSupport", "联系客服支持")}</button>
           </div>
         </section>
+
+        <section class="section trust-panel reveal">
+          <div class="section-heading">
+            <span>可信接入</span>
+            <h2>为什么选择 Daxiang AI</h2>
+          </div>
+          <div class="trust-list" id="trust-list"></div>
+        </section>
       </aside>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>© ${new Date().getFullYear()} 大象Token</p>
+    <p>© ${new Date().getFullYear()} Daxiang AI</p>
     <div class="footer-links">
       <button class="footer-link" type="button" data-action="support">${t("common.support", "支持")}</button>
       <a href="https://chongplus.plus/" target="_blank" rel="noreferrer">chongplus.plus</a>
@@ -307,14 +348,24 @@ document.querySelector("#steps-list").innerHTML = steps
   )
   .join("");
 
-document.querySelector("#recharge-links").innerHTML = rechargeLinks
+document.querySelector("#model-matrix").innerHTML = modelRows
   .map(
     (item, idx) => `
-      <article class="link-card recharge-card ${idx === 0 ? "is-featured" : ""} stagger" style="--delay:${idx * 80}ms">
-        <span class="card-kicker">${idx === 0 ? t("common.recommended", "推荐") : t("common.backup", "备用")}</span>
+      <article class="model-row stagger" style="--delay:${idx * 80}ms">
+        <strong>${item.series}</strong>
+        <span>${item.status}</span>
+        <p>${item.scene}</p>
+      </article>
+    `
+  )
+  .join("");
+
+document.querySelector("#trust-list").innerHTML = trustItems
+  .map(
+    (item, idx) => `
+      <article class="trust-list-item stagger" style="--delay:${idx * 80}ms">
         <h3>${item.title}</h3>
         <p>${item.desc}</p>
-        <a class="btn btn-secondary" href="${item.url}" target="_blank" rel="noreferrer">${item.cta}</a>
       </article>
     `
   )

@@ -14,59 +14,59 @@ const messages = {
     nav: {
       recharge: "Recharge",
       links: "Quick Links",
-      advantage: "Advantages",
+      advantage: "Core Capabilities",
       steps: "Setup Flow",
       tutorials: "Tutorials",
       faq: "FAQ / Guides"
     },
     home: {
-      badge: "Elephant Token Gateway",
-      title: "Token Access For Frontier Models",
+      badge: "Daxiang AI Model Gateway",
+      title: "A unified API gateway for frontier models",
       subtitle:
-        "Elephant Token provides unified Token recharge, key management, and stable API access for GPT-5.5, Claude Opus 4.7, and more.",
+        "Daxiang AI provides unified model access, API key management, Token recharge, usage visibility, and stable API routing for GPT, Claude, Gemini, Codex, and more.",
       modelsLabel: "Supported models",
       ctaRegister: "Register",
       ctaSteps: "View Setup Steps",
       ctaTutorials: "View Tutorials",
       sectionRecharge: "Recharge Center",
       sectionLinks: "Quick Links",
-      sectionAdvantage: "Why Elephant Token",
+      sectionAdvantage: "Infrastructure capabilities for model access",
       sectionSteps: "4-Step Setup",
       sectionFaq: "FAQ / Guides",
       rechargeSupportPrefix: "If payment fails, ",
       faqSupportPrefix: "If payment/redeem/network issues occur, ",
       highlights: {
         unified: {
-          title: "Frontier Models Ready",
-          desc: "GPT-5.5, Claude Opus 4.7, and other advanced models are available with flexible Token usage."
+          title: "Unified Model Access",
+          desc: "Use an OpenAI-compatible API to access multiple model providers with less integration and switching cost."
         },
         reliable: {
-          title: "Stable API Access",
-          desc: "Use one Base URL for mainstream models with streaming support and less client-side configuration."
+          title: "Stable API Routing",
+          desc: "Optimized access routes support streaming output, frequent requests, and long-running tasks."
         },
         observability: {
-          title: "Token Recharge & Redeem",
-          desc: "Recharge, redeem codes, and manage keys in one place for clearer model cost control."
+          title: "Key & Quota Management",
+          desc: "Manage multiple API keys, quotas, usage stats, and consumption records in one place."
         }
       },
       steps: {
-        1: "Register an account and complete basic setup",
-        2: "Point your client Base URL to https://api.chongplus.plus/",
-        3: "Call GPT-5.5, Claude Opus 4.7, and other supported models",
-        4: "Check Token balance, redeem codes, and usage in the console"
+        1: "Register an account and prepare balance or quota",
+        2: "Create API keys for apps, projects, or teams",
+        3: "Point your client Base URL to https://api.chongplus.plus/",
+        4: "Call GPT, Claude, Gemini, Codex, and other model series through a compatible API"
       },
       recharge: {
         new: { title: "New Store", desc: "Recommended with a more complete experience.", cta: "Recharge" },
         cn: { title: "Mainland Store", desc: "Recommended for users in mainland network environments.", cta: "Recharge" }
       },
       quick: {
-        register: { title: "Register", desc: "New users should create an account first.", cta: "Register" },
+        register: { title: "Register", desc: "Create an account to prepare keys, quota, and model access.", cta: "Register" },
         tutorials: {
-          title: "Codex / Claude Code Tutorials",
-          desc: "Two tutorials on a dedicated page with step-by-step setup.",
+          title: "Integration Tutorials",
+          desc: "View dedicated tutorials for Codex, Claude Code, and more.",
           cta: "View Tutorials"
         },
-        keys: { title: "Create Key", desc: "Create an API Key after login.", cta: "Create Key" },
+        keys: { title: "Create API Key", desc: "Create keys for apps, tools, and team usage after login.", cta: "Create Key" },
         redeem: { title: "Redeem", desc: "Redeem your code here.", cta: "Redeem" },
         support: { title: "Support", desc: "Contact support if you hit issues.", cta: "View" }
       },
@@ -118,40 +118,40 @@ const messages = {
       faq: "FAQ / ガイド"
     },
     home: {
-      badge: "Elephant Token ゲートウェイ",
-      title: "先端モデル向け Token アクセス",
+      badge: "Daxiang AI モデルゲートウェイ",
+      title: "先端モデル向け統合 API ゲートウェイ",
       subtitle:
-        "Elephant Token は GPT-5.5、Claude Opus 4.7 などに対応し、Token チャージ、Key 管理、安定した API 接続を提供します。",
+        "Daxiang AI は GPT、Claude、Gemini、Codex などに対応し、統合モデル接続、API Key 管理、Token チャージ、利用量管理、安定した API ルーティングを提供します。",
       modelsLabel: "対応モデル",
       ctaRegister: "今すぐ登録",
       ctaSteps: "導入手順を見る",
       ctaTutorials: "チュートリアルを見る",
       sectionRecharge: "チャージセンター",
       sectionLinks: "クイックリンク",
-      sectionAdvantage: "Elephant Token を選ぶ理由",
+      sectionAdvantage: "モデル接続のための基盤機能",
       sectionSteps: "4 ステップで導入",
       sectionFaq: "FAQ / ガイド",
       rechargeSupportPrefix: "決済で問題が発生した場合は、",
       faqSupportPrefix: "決済・交換・ネットワークの問題がある場合は、",
       highlights: {
         unified: {
-          title: "先端モデルに対応",
-          desc: "GPT-5.5、Claude Opus 4.7 などの高性能モデルを Token ベースで柔軟に利用できます。"
+          title: "統合モデル接続",
+          desc: "OpenAI 互換 API で複数の主流モデルに接続し、開発と切り替えコストを削減します。"
         },
         reliable: {
-          title: "安定した API 接続",
-          desc: "1 つの Base URL で主流モデルに接続し、ストリーミングにも対応します。"
+          title: "安定した API ルーティング",
+          desc: "ストリーミング出力、高頻度リクエスト、長時間タスクに対応する接続経路を提供します。"
         },
         observability: {
-          title: "Token チャージと交換",
-          desc: "チャージ、交換コード、Key 管理をまとめて行い、モデル利用コストを把握できます。"
+          title: "Key と利用量管理",
+          desc: "複数 API Key、利用枠、消費記録、利用統計をまとめて管理できます。"
         }
       },
       steps: {
-        1: "アカウント登録と基本設定を完了する",
-        2: "クライアントの Base URL を https://api.chongplus.plus/ に設定する",
-        3: "GPT-5.5、Claude Opus 4.7 などの対応モデルを呼び出す",
-        4: "コンソールで Token 残高、交換、利用量を確認する"
+        1: "アカウントを登録し、残高または利用枠を準備する",
+        2: "アプリやチーム用の API Key を作成する",
+        3: "クライアントの Base URL を https://api.chongplus.plus/ に設定する",
+        4: "OpenAI 互換 API で GPT、Claude、Gemini、Codex などを呼び出す"
       },
       recharge: {
         new: { title: "新ストア", desc: "推奨入口。より完全な体験。", cta: "チャージへ" },
@@ -215,40 +215,40 @@ const messages = {
       faq: "FAQ / 가이드"
     },
     home: {
-      badge: "Elephant Token 게이트웨이",
-      title: "프런티어 모델용 Token 액세스",
+      badge: "Daxiang AI 모델 게이트웨이",
+      title: "프런티어 모델을 위한 통합 API 게이트웨이",
       subtitle:
-        "Elephant Token은 GPT-5.5, Claude Opus 4.7 등을 지원하며 Token 충전, Key 관리, 안정적인 API 액세스를 제공합니다.",
+        "Daxiang AI는 GPT, Claude, Gemini, Codex 등을 위한 통합 모델 접속, API Key 관리, Token 충전, 사용량 관리, 안정적인 API 라우팅을 제공합니다.",
       modelsLabel: "지원 모델",
       ctaRegister: "지금 가입",
       ctaSteps: "연동 절차 보기",
       ctaTutorials: "튜토리얼 보기",
       sectionRecharge: "충전 센터",
       sectionLinks: "빠른 링크",
-      sectionAdvantage: "Elephant Token을 선택하는 이유",
+      sectionAdvantage: "모델 접속을 위한 핵심 인프라",
       sectionSteps: "4단계 연동",
       sectionFaq: "FAQ / 가이드",
       rechargeSupportPrefix: "결제 오류가 발생하면 ",
       faqSupportPrefix: "결제/교환/네트워크 문제가 있으면 ",
       highlights: {
         unified: {
-          title: "프런티어 모델 지원",
-          desc: "GPT-5.5, Claude Opus 4.7 등 고급 모델을 Token 기반으로 유연하게 사용할 수 있습니다."
+          title: "통합 모델 접속",
+          desc: "OpenAI 호환 API로 여러 주요 모델에 접속해 개발과 전환 비용을 줄입니다."
         },
         reliable: {
-          title: "안정적인 API 액세스",
-          desc: "하나의 Base URL로 주요 모델에 연결하고 스트리밍 호출도 사용할 수 있습니다."
+          title: "안정적인 API 라우팅",
+          desc: "스트리밍 출력, 고빈도 요청, 장시간 작업 호출을 지원하는 접속 경로를 제공합니다."
         },
         observability: {
-          title: "Token 충전과 교환",
-          desc: "충전, 교환 코드, Key 관리를 한곳에서 처리해 모델 사용 비용을 쉽게 관리합니다."
+          title: "Key 및 사용량 관리",
+          desc: "여러 API Key, 할당량, 사용 통계, 소비 기록을 한곳에서 관리합니다."
         }
       },
       steps: {
-        1: "계정을 등록하고 기본 설정을 완료합니다",
-        2: "클라이언트 Base URL을 https://api.chongplus.plus/ 로 설정합니다",
-        3: "GPT-5.5, Claude Opus 4.7 등 지원 모델을 호출합니다",
-        4: "콘솔에서 Token 잔액, 교환, 사용량을 확인합니다"
+        1: "계정을 등록하고 잔액 또는 사용 한도를 준비합니다",
+        2: "앱, 프로젝트, 팀을 위한 API Key를 생성합니다",
+        3: "클라이언트 Base URL을 https://api.chongplus.plus/ 로 설정합니다",
+        4: "OpenAI 호환 API로 GPT, Claude, Gemini, Codex 등을 호출합니다"
       },
       recharge: {
         new: { title: "신규 스토어", desc: "권장 경로로 더 완성된 경험을 제공합니다.", cta: "충전하기" },
