@@ -45,7 +45,7 @@ export const codexTutorial = {
       title: "安装 Codex",
       body:
         '<div class="install-options">' +
-        '<article><strong>方案一：下载 Codex 客户端</strong><p>打开 <a href="https://openai.com/zh-Hans-CN/codex/" target="_blank" rel="noreferrer">Codex 官方页面</a>，下载并安装 Codex 客户端。适合希望用独立应用管理项目、任务和多代理工作的用户。</p></article>' +
+        '<article><strong>方案一：下载 Codex 客户端</strong><p>Codex 客户端目前支持 <a href="https://persistent.oaistatic.com/codex-app-prod/Codex.dmg" target="_blank" rel="noreferrer">macOS 版</a> 和 <a href="https://get.microsoft.com/installer/download/9PLM9XGG6VKS?cid=website_cta_psi" target="_blank" rel="noreferrer">Windows 版</a>。国内下载也可使用 <a href="https://pan.baidu.com/s/1ptQ1IDQ-JqSqqY3Fs80Igw?pwd=czvk" target="_blank" rel="noreferrer">百度网盘</a>（提取码：czvk）。如果链接失效，可打开 <a href="https://openai.com/codex/" target="_blank" rel="noreferrer">Codex 官方页面</a> 重新选择下载入口。</p></article>' +
         "<article><strong>方案二：安装 VS Code 插件</strong><p>打开 VS Code 插件商店，搜索 <code>Codex</code> 并安装插件。适合平时主要在 VS Code 里写代码，希望直接在编辑器中使用 Codex 的用户。</p></article>" +
         "<article><strong>方案三：使用 npm 安装 Codex CLI</strong><p>适合习惯终端工作的用户。先确保本机已安装 Node.js 和 npm，然后在终端执行：</p><pre><code>npm install -g @openai/codex</code></pre><p>安装完成后，在项目目录运行 <code>codex</code> 启动；后续需要升级时可执行：</p><pre><code>codex --upgrade</code></pre></article>" +
         "</div>",
