@@ -26,7 +26,7 @@ export const codexTutorial = {
       body:
         '兑换码购买位置：<a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
         '备用充值地址：<a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
-        "进入充值中心后，根据你的网络环境选择新商城或国内商城；如果入口打不开，可使用备用充值地址。",
+        "进入充值中心后，优先选择新商城；如果新商城打不开，可使用备用充值地址。",
       images: []
     },
     {
@@ -96,7 +96,7 @@ export const claudeCodeTutorial = {
       body:
         '兑换码购买位置：<a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
         '备用充值地址：<a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
-        "进入充值中心后，根据你的网络环境选择新商城或国内商城；如果入口打不开，可使用备用充值地址。",
+        "进入充值中心后，优先选择新商城；如果新商城打不开，可使用备用充值地址。",
       images: []
     },
     {

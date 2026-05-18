@@ -32,16 +32,9 @@ const rechargeChannels = [
     cta: "去新商城充值"
   },
   {
-    label: "国内入口",
-    title: "国内商城",
-    desc: "国内用户或国内网络环境，选择这里充值。",
-    url: "http://wx.wukongkt.vip:28088/",
-    cta: "去国内商城充值"
-  },
-  {
     label: "备用入口",
     title: "备用充值地址",
-    desc: "如果前两个充值入口打不开或访问异常，可以使用备用地址继续充值。",
+    desc: "如果新商城打不开或访问异常，可以使用备用地址继续充值。",
     url: "https://api.chongplus.plus/purchase",
     cta: "去备用充值"
   }
@@ -76,10 +69,9 @@ app.innerHTML = `
       <div class="recharge-hero-copy">
         <p class="badge">充值中心</p>
         <h1>选择充值入口</h1>
-        <p class="hero-text">新商城是新的充值入口；国内商城适合国内网络环境。如果前两个入口打不开，可使用备用充值地址继续购买。</p>
+        <p class="hero-text">新商城是新的充值入口，优先选择这里充值。如果新商城打不开，可使用备用充值地址继续购买。</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://shop.chongplus.plus/" target="_blank" rel="noreferrer">去新商城充值</a>
-          <a class="btn btn-secondary" href="http://wx.wukongkt.vip:28088/" target="_blank" rel="noreferrer">去国内商城充值</a>
           <a class="btn btn-secondary" href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">备用充值地址</a>
           <a class="btn btn-secondary" href="https://api.chongplus.plus/redeem" target="_blank" rel="noreferrer">兑换余额</a>
         </div>

@@ -56,8 +56,7 @@ const messages = {
         4: "Call GPT, Claude, Gemini, Codex, and other model series through a compatible API"
       },
       recharge: {
-        new: { title: "New Store", desc: "Recommended with a more complete experience.", cta: "Recharge" },
-        cn: { title: "Mainland Store", desc: "Recommended for users in mainland network environments.", cta: "Recharge" }
+        new: { title: "New Store", desc: "Recommended with a more complete experience.", cta: "Recharge" }
       },
       quick: {
         register: { title: "Register", desc: "Create an account to prepare keys, quota, and model access.", cta: "Register" },
@@ -154,8 +153,7 @@ const messages = {
         4: "OpenAI 互換 API で GPT、Claude、Gemini、Codex などを呼び出す"
       },
       recharge: {
-        new: { title: "新ストア", desc: "推奨入口。より完全な体験。", cta: "チャージへ" },
-        cn: { title: "国内ストア", desc: "中国本土ネットワーク向けの優先入口。", cta: "チャージへ" }
+        new: { title: "新ストア", desc: "推奨入口。より完全な体験。", cta: "チャージへ" }
       },
       quick: {
         register: { title: "アカウント登録", desc: "まず登録を完了してから次の手順へ。", cta: "登録へ" },
@@ -251,8 +249,7 @@ const messages = {
         4: "OpenAI 호환 API로 GPT, Claude, Gemini, Codex 등을 호출합니다"
       },
       recharge: {
-        new: { title: "신규 스토어", desc: "권장 경로로 더 완성된 경험을 제공합니다.", cta: "충전하기" },
-        cn: { title: "국내 스토어", desc: "중국 내 네트워크 환경에서 우선 사용 가능합니다.", cta: "충전하기" }
+        new: { title: "신규 스토어", desc: "권장 경로로 더 완성된 경험을 제공합니다.", cta: "충전하기" }
       },
       quick: {
         register: { title: "계정 등록", desc: "신규 사용자는 먼저 등록을 완료하세요.", cta: "등록하기" },
@@ -313,7 +310,7 @@ const tutorialOverlays = {
           body:
             'Purchase location: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
             'Backup purchase address: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
-            "Choose the new store or mainland store based on your network environment. If those entries do not open, use the backup purchase address."
+            "Use the new store first. If it does not open, use the backup purchase address."
         },
         {
           title: "Enter Redeem Code",
@@ -362,7 +359,7 @@ const tutorialOverlays = {
           body:
             'Purchase location: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
             'Backup purchase address: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
-            "Choose the new store or mainland store based on your network environment. If those entries do not open, use the backup purchase address."
+            "Use the new store first. If it does not open, use the backup purchase address."
         },
         {
           title: "Enter Redeem Code",
@@ -404,7 +401,7 @@ const tutorialOverlays = {
           body:
             '購入場所: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
             '予備の購入先: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
-            "ネットワーク環境に応じて新ストアまたは国内ストアを選択します。どちらも開けない場合は予備の購入先を使用してください。"
+            "まず新ストアを使用してください。開けない場合は予備の購入先を使用してください。"
         },
         {
           title: "交換コードを入力",
@@ -453,7 +450,7 @@ const tutorialOverlays = {
           body:
             '購入場所: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
             '予備の購入先: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
-            "ネットワーク環境に応じて新ストアまたは国内ストアを選択します。どちらも開けない場合は予備の購入先を使用してください。"
+            "まず新ストアを使用してください。開けない場合は予備の購入先を使用してください。"
         },
         {
           title: "交換コードを入力",
@@ -495,7 +492,7 @@ const tutorialOverlays = {
           body:
             '구매 위치: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
             '예비 구매 주소: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
-            "네트워크 환경에 따라 신규 스토어 또는 국내 스토어를 선택하세요. 두 입구가 열리지 않으면 예비 구매 주소를 사용하세요."
+            "신규 스토어를 먼저 사용하세요. 열리지 않으면 예비 구매 주소를 사용하세요."
         },
         {
           title: "교환 코드 입력",
@@ -543,7 +540,7 @@ const tutorialOverlays = {
           body:
             '구매 위치: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
             '예비 구매 주소: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
-            "네트워크 환경에 따라 신규 스토어 또는 국내 스토어를 선택하세요. 두 입구가 열리지 않으면 예비 구매 주소를 사용하세요."
+            "신규 스토어를 먼저 사용하세요. 열리지 않으면 예비 구매 주소를 사용하세요."
         },
         {
           title: "교환 코드 입력",
