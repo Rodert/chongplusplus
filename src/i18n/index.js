@@ -312,7 +312,8 @@ const tutorialOverlays = {
           title: "Buy Redeem Code",
           body:
             'Purchase location: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
-            "Choose the new store or mainland store based on your network environment."
+            'Backup purchase address: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
+            "Choose the new store or mainland store based on your network environment. If those entries do not open, use the backup purchase address."
         },
         {
           title: "Enter Redeem Code",
@@ -360,7 +361,8 @@ const tutorialOverlays = {
           title: "Buy Redeem Code",
           body:
             'Purchase location: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
-            "Choose the new store or mainland store based on your network environment."
+            'Backup purchase address: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
+            "Choose the new store or mainland store based on your network environment. If those entries do not open, use the backup purchase address."
         },
         {
           title: "Enter Redeem Code",
@@ -401,7 +403,8 @@ const tutorialOverlays = {
           title: "交換コードを購入",
           body:
             '購入場所: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
-            "ネットワーク環境に応じて新ストアまたは国内ストアを選択します。"
+            '予備の購入先: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
+            "ネットワーク環境に応じて新ストアまたは国内ストアを選択します。どちらも開けない場合は予備の購入先を使用してください。"
         },
         {
           title: "交換コードを入力",
@@ -449,7 +452,8 @@ const tutorialOverlays = {
           title: "交換コードを購入",
           body:
             '購入場所: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
-            "ネットワーク環境に応じて新ストアまたは国内ストアを選択します。"
+            '予備の購入先: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
+            "ネットワーク環境に応じて新ストアまたは国内ストアを選択します。どちらも開けない場合は予備の購入先を使用してください。"
         },
         {
           title: "交換コードを入力",
@@ -490,7 +494,8 @@ const tutorialOverlays = {
           title: "교환 코드 구매",
           body:
             '구매 위치: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
-            "네트워크 환경에 따라 신규 스토어 또는 국내 스토어를 선택하세요."
+            '예비 구매 주소: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
+            "네트워크 환경에 따라 신규 스토어 또는 국내 스토어를 선택하세요. 두 입구가 열리지 않으면 예비 구매 주소를 사용하세요."
         },
         {
           title: "교환 코드 입력",
@@ -537,7 +542,8 @@ const tutorialOverlays = {
           title: "교환 코드 구매",
           body:
             '구매 위치: <a href="https://docs.chongplus.plus/recharge" target="_blank" rel="noreferrer">docs.chongplus.plus/recharge</a><br />' +
-            "네트워크 환경에 따라 신규 스토어 또는 국내 스토어를 선택하세요."
+            '예비 구매 주소: <a href="https://api.chongplus.plus/purchase" target="_blank" rel="noreferrer">api.chongplus.plus/purchase</a><br />' +
+            "네트워크 환경에 따라 신규 스토어 또는 국내 스토어를 선택하세요. 두 입구가 열리지 않으면 예비 구매 주소를 사용하세요."
         },
         {
           title: "교환 코드 입력",
