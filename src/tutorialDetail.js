@@ -1,3 +1,4 @@
+import "./cacheBuster.js";
 import "./style.css";
 import { tutorials } from "./tutorialData.js";
 import { supportModalMarkup, wireSupportModal } from "./supportModal.js";

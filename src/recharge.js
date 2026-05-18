@@ -1,3 +1,4 @@
+import "./cacheBuster.js";
 import "./style.css";
 import { supportModalMarkup, wireSupportModal } from "./supportModal.js";
 import { LANGUAGE_OPTIONS, applyDocumentLang, getCurrentLang, setLang, t } from "./i18n/index.js";
